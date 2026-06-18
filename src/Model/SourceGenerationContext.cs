@@ -6,6 +6,7 @@ namespace pomni.Model;
 [JsonSerializable(typeof(Dictionary<string, PomniLockJson>))]
 [JsonSourceGenerationOptions(
     PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-    UseStringEnumConverter = true
+    UseStringEnumConverter = true,
+    WriteIndented = true
 )]
 internal partial class SourceGenerationContext : JsonSerializerContext;

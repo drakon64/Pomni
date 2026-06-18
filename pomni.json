@@ -1,0 +1,9 @@
+{
+  "nixpkgs": {
+    "url": "https://github.com/NixOS/nixpkgs",
+    "revision": "",
+    "referenceType": "commit",
+    "reference": null,
+    "frozen": false
+  }
+}
