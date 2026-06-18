@@ -5,7 +5,7 @@ namespace Pomni.Commands;
 
 internal static class Add
 {
-    public static void AddRepository(string name, string url)
+    public static void AddRepository(string name, Forge forge, string repository)
     {
         var pomniJson = JsonSerializer.Deserialize<Dictionary<string, PomniJson>>(
             File.ReadAllText("pomni.json"),
@@ -16,7 +16,8 @@ internal static class Add
             name,
             new PomniJson
             {
-                Url = url,
+                Forge = forge,
+                Repository = repository,
                 Revision = "",
                 ReferenceType = ReferenceType.Commit,
             }

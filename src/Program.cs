@@ -1,5 +1,6 @@
 ﻿using System.CommandLine;
 using Pomni.Commands;
+using pomni.Model;
 
 namespace Pomni;
 
@@ -14,13 +15,19 @@ class Program
         rootCommand.Add(initCommand);
 
         var nameArgument = new Argument<string>("name");
+        var forgeArgument = new Argument<Forge>("forge");
         var urlArgument = new Argument<string>("url");
 
         var addCommand = new Command("add");
         addCommand.Arguments.Add(nameArgument);
+        addCommand.Arguments.Add(forgeArgument);
         addCommand.Arguments.Add(urlArgument);
         addCommand.SetAction(parseResult =>
-            Add.AddRepository(parseResult.GetValue(nameArgument), parseResult.GetValue(urlArgument))
+            Add.AddRepository(
+                parseResult.GetValue(nameArgument),
+                parseResult.GetValue(forgeArgument),
+                parseResult.GetValue(urlArgument)
+            )
         );
         rootCommand.Add(addCommand);
 

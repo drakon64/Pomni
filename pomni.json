@@ -1,6 +1,7 @@
 {
   "nixpkgs": {
-    "url": "https://github.com/NixOS/nixpkgs",
+    "forge": "github",
+    "repository": "NixOS/nixpkgs",
     "revision": "",
     "referenceType": "commit",
     "reference": null,
