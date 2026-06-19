@@ -1,6 +1,8 @@
 {
   "nixpkgs": {
     "forge": "github",
-    "repository": "NixOS/nixpkgs"
+    "repository": "NixOS/nixpkgs",
+    "reference": "nixpkgs-unstable",
+    "referenceType": "branch"
   }
 }

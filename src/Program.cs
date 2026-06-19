@@ -18,15 +18,27 @@ class Program
         var forgeArgument = new Argument<Forge>("forge");
         var repositoryArgument = new Argument<string>("repository");
 
+        var referenceOption = new Option<string>("-r", "--reference");
+        var referenceTypeOption = new Option<ReferenceType>("-t", "--reference-type");
+        var frozenOption = new Option<bool?>("-f", "--frozen");
+
         var addCommand = new Command("add");
         addCommand.Arguments.Add(nameArgument);
         addCommand.Arguments.Add(forgeArgument);
         addCommand.Arguments.Add(repositoryArgument);
+
+        addCommand.Options.Add(referenceOption);
+        addCommand.Options.Add(referenceTypeOption);
+        addCommand.Options.Add(frozenOption);
+
         addCommand.SetAction(parseResult =>
             Add.AddRepository(
-                parseResult.GetValue(nameArgument),
-                parseResult.GetValue(forgeArgument),
-                parseResult.GetValue(repositoryArgument)
+                parseResult.GetRequiredValue(nameArgument),
+                parseResult.GetRequiredValue(forgeArgument),
+                parseResult.GetRequiredValue(repositoryArgument),
+                parseResult.GetValue(referenceOption),
+                parseResult.GetValue(referenceTypeOption),
+                parseResult.GetValue(frozenOption)
             )
         );
         rootCommand.Add(addCommand);

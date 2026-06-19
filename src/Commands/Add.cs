@@ -5,14 +5,31 @@ namespace Pomni.Commands;
 
 internal static class Add
 {
-    public static void AddRepository(string name, Forge forge, string repository)
+    public static void AddRepository(
+        string name,
+        Forge forge,
+        string repository,
+        string? reference,
+        ReferenceType? referenceType,
+        bool? frozen
+    )
     {
         var pomniJson = JsonSerializer.Deserialize<Dictionary<string, PomniJson>>(
             File.ReadAllText("pomni.json"),
             SourceGenerationContext.Default.DictionaryStringPomniJson
         );
 
-        pomniJson.Add(name, new PomniJson { Forge = forge, Repository = repository });
+        pomniJson.Add(
+            name,
+            new PomniJson
+            {
+                Forge = forge,
+                Repository = repository,
+                Reference = reference,
+                ReferenceType = referenceType,
+                Frozen = frozen,
+            }
+        );
 
         using var pomniJsonFile = File.Open("pomni.json", FileMode.Create);
 
