@@ -16,17 +16,17 @@ class Program
 
         var nameArgument = new Argument<string>("name");
         var forgeArgument = new Argument<Forge>("forge");
-        var urlArgument = new Argument<string>("url");
+        var repositoryArgument = new Argument<string>("repository");
 
         var addCommand = new Command("add");
         addCommand.Arguments.Add(nameArgument);
         addCommand.Arguments.Add(forgeArgument);
-        addCommand.Arguments.Add(urlArgument);
+        addCommand.Arguments.Add(repositoryArgument);
         addCommand.SetAction(parseResult =>
             Add.AddRepository(
                 parseResult.GetValue(nameArgument),
                 parseResult.GetValue(forgeArgument),
-                parseResult.GetValue(urlArgument)
+                parseResult.GetValue(repositoryArgument)
             )
         );
         rootCommand.Add(addCommand);

@@ -12,16 +12,7 @@ internal static class Add
             SourceGenerationContext.Default.DictionaryStringPomniJson
         );
 
-        pomniJson.Add(
-            name,
-            new PomniJson
-            {
-                Forge = forge,
-                Repository = repository,
-                Revision = "",
-                ReferenceType = ReferenceType.Commit,
-            }
-        );
+        pomniJson.Add(name, new PomniJson { Forge = forge, Repository = repository });
 
         using var pomniJsonFile = File.Open("pomni.json", FileMode.Create);
 

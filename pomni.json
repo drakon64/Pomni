@@ -1,10 +1,6 @@
 {
   "nixpkgs": {
     "forge": "github",
-    "repository": "NixOS/nixpkgs",
-    "revision": "",
-    "referenceType": "commit",
-    "reference": null,
-    "frozen": false
+    "repository": "NixOS/nixpkgs"
   }
 }

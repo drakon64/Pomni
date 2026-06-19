@@ -6,11 +6,10 @@ internal class PomniJson
 {
     public required Forge Forge { get; init; }
     public required string Repository { get; init; }
-    public required string Revision { get; init; }
-    public required ReferenceType ReferenceType { get; init; }
 
-    public string? Reference { get; init; } = null;
-    public bool? Frozen { get; init; } = false;
+    public string? Reference { get; init; }
+    public ReferenceType? ReferenceType { get; init; }
+    public bool? Frozen { get; init; }
 }
 
 internal enum Forge
@@ -21,9 +20,12 @@ internal enum Forge
 
 internal enum ReferenceType
 {
-    [JsonStringEnumMemberName("commit")]
-    Commit,
+    [JsonStringEnumMemberName("branch")]
+    Branch,
 
+    [JsonStringEnumMemberName("release")]
     Release,
+    
+    [JsonStringEnumMemberName("tag")]
     Tag,
 }
