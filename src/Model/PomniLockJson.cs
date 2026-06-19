@@ -1,4 +1,4 @@
-namespace pomni.Model;
+namespace Pomni.Model;
 
 internal class PomniLockJson
 {

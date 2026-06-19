@@ -1,5 +1,5 @@
 using System.Text.Json;
-using pomni.Model;
+using Pomni.Model;
 
 namespace Pomni.Commands;
 

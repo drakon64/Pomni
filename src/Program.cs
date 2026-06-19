@@ -1,6 +1,6 @@
 ﻿using System.CommandLine;
 using Pomni.Commands;
-using pomni.Model;
+using Pomni.Model;
 
 namespace Pomni;
 

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace pomni.Model;
+namespace Pomni.Model;
 
 internal class PomniJson
 {
