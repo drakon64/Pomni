@@ -27,14 +27,19 @@ internal static class Update
 
         foreach (var pin in pomniPins)
         {
-            var containsKey = updatedLocks.ContainsKey(pin.Key) ? pomniLocks?[pin.Key] : null;
+            if (pin.Value.Frozen is false or null)
+            {
+                var newLock = updatedLocks.ContainsKey(pin.Key) ? pomniLocks?[pin.Key] : null;
 
-            var updatedPin = await UpdateRepository(pin.Key, pin.Value, containsKey);
+                var updatedPin = await UpdateRepository(pin.Key, pin.Value, newLock);
 
-            if (containsKey is not null)
-                updatedLocks[pin.Key] = updatedPin;
+                if (newLock is not null)
+                    updatedLocks[pin.Key] = updatedPin;
+                else
+                    updatedLocks.Add(pin.Key, updatedPin);
+            }
             else
-                updatedLocks.Add(pin.Key, updatedPin);
+                updatedLocks[pin.Key] = pomniLocks[pin.Key];
         }
 
         pomniLockJson = File.Open("pomni.lock.json", FileMode.Truncate);
