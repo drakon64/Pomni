@@ -29,9 +29,9 @@ internal static class Update
         {
             if (pin.Value.Frozen is false or null)
             {
-                var newLock = updatedLocks.ContainsKey(pin.Key) ? pomniLocks?[pin.Key] : null;
+                var newLock = pomniLocks.GetValueOrDefault(pin.Key);
 
-                var updatedPin = await UpdateRepository(pin.Key, pin.Value, newLock);
+                var updatedPin = await UpdateRepository(pin.Value);
 
                 if (newLock is not null)
                     updatedLocks[pin.Key] = updatedPin;
@@ -52,11 +52,7 @@ internal static class Update
         await pomniLockJson.DisposeAsync();
     }
 
-    private static async Task<PomniLock> UpdateRepository(
-        string name,
-        PomniPin pomniPin,
-        PomniLock? pomniLock
-    )
+    private static async Task<PomniLock> UpdateRepository(PomniPin pomniPin)
     {
         string sha;
 
@@ -78,11 +74,6 @@ internal static class Update
 
             var getBranch = await GitHubClient.GetBranch(repo, branch);
             sha = getBranch.Commit.Sha;
-
-            if (pomniLock is not null)
-                await Console.Out.WriteLineAsync($"{name}: {pomniLock.Revision} -> {sha}");
-            else
-                await Console.Out.WriteLineAsync($"{name}: {sha}");
         }
         else
             sha = "";
@@ -90,7 +81,6 @@ internal static class Update
         return new PomniLock
         {
             Url = "",
-            Revision = sha,
             Hash = "",
         };
     }
