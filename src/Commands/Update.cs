@@ -80,7 +80,7 @@ internal static class Update
 
         return new PomniLock
         {
-            Url = "",
+            Url = $"https://github.com/{pomniPin.Repository}/archive/{sha}.tar.gz",
             Hash = "",
         };
     }
