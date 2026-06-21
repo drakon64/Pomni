@@ -3,5 +3,9 @@
 }:
 
 pkgs.mkShell {
-  packages = [ pkgs.dotnetCorePackages.sdk_10_0 ];
+  packages = with pkgs; [
+    dotnetCorePackages.sdk_10_0
+
+    nixfmt
+  ];
 }
