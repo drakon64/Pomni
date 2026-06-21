@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <PublishAot>true</PublishAot>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <AssemblyName>pomni</AssemblyName>
   </PropertyGroup>

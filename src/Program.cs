@@ -11,7 +11,7 @@ class Program
         var rootCommand = new RootCommand("Nix dependency pinning");
 
         var initCommand = new Command("init");
-        initCommand.SetAction(_ => Commands.Init.InitPomniJson());
+        initCommand.SetAction(_ => Init.InitPomniJson());
         rootCommand.Add(initCommand);
 
         var nameArgument = new Argument<string>("name");
