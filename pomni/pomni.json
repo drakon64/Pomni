@@ -1,8 +1,11 @@
 {
-  "nixpkgs": {
-    "forge": "github",
-    "repository": "NixOS/nixpkgs",
-    "reference": "nixpkgs-unstable",
-    "referenceType": "branch"
+  "version": 1,
+  "pins": {
+    "nixpkgs": {
+      "forge": "github",
+      "repository": "NixOS/nixpkgs",
+      "reference": "nixpkgs-unstable",
+      "referenceType": "branch"
+    }
   }
 }

@@ -2,6 +2,12 @@ using System.Text.Json.Serialization;
 
 namespace Pomni.Model;
 
+internal class PomniPins
+{
+    public required byte Version { get; init; }
+    public required Dictionary<string, PomniPin> Pins { get; init; }
+}
+
 internal class PomniPin
 {
     public required Forge Forge { get; init; }

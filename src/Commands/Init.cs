@@ -12,17 +12,12 @@ internal static class Init
         using var pomniLockJson = File.Open("pomni/pomni.lock.json", FileMode.CreateNew);
 
         pomniJson.Write(
-            JsonSerializer.SerializeToUtf8Bytes<Dictionary<string, PomniPin>>(
-                new Dictionary<string, PomniPin>(),
-                SourceGenerationContext.Default.DictionaryStringPomniPin
+            JsonSerializer.SerializeToUtf8Bytes<PomniPins>(
+                new PomniPins { Version = 1, Pins = new Dictionary<string, PomniPin>() },
+                SourceGenerationContext.Default.PomniPins
             )
         );
 
-        pomniLockJson.Write(
-            JsonSerializer.SerializeToUtf8Bytes<Dictionary<string, PomniLock>>(
-                new Dictionary<string, PomniLock>(),
-                SourceGenerationContext.Default.DictionaryStringPomniLock
-            )
-        );
+        pomniLockJson.Write("{}"u8);
     }
 }

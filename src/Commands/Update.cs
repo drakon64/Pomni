@@ -12,9 +12,9 @@ internal static class Update
         await using var pomniJson = File.OpenRead("pomni/pomni.json");
         var pomniLockJson = File.OpenRead("pomni/pomni.lock.json");
 
-        var pomniPins = await JsonSerializer.DeserializeAsync<Dictionary<string, PomniPin>>(
+        var pomniPins = await JsonSerializer.DeserializeAsync<PomniPins>(
             pomniJson,
-            SourceGenerationContext.Default.DictionaryStringPomniPin
+            SourceGenerationContext.Default.PomniPins
         );
 
         var pomniLocks = await JsonSerializer.DeserializeAsync<Dictionary<string, PomniLock>>(
@@ -26,7 +26,7 @@ internal static class Update
 
         var updatedLocks = new Dictionary<string, PomniLock>();
 
-        foreach (var pin in pomniPins)
+        foreach (var pin in pomniPins.Pins)
         {
             if (pin.Value.Frozen is false or null)
             {
