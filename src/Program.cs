@@ -1,5 +1,6 @@
 ﻿using System.CommandLine;
 using Pomni.Commands;
+using Pomni.Commands.Update;
 using Pomni.Model;
 
 namespace Pomni;
