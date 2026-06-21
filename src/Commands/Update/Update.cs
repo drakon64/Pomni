@@ -55,8 +55,6 @@ internal static partial class Update
         await pomniLockJson.DisposeAsync();
     }
 
-    
-
     private static async Task<string> GetSri(string url)
     {
         var prefetchProcessStartInfo = new ProcessStartInfo
