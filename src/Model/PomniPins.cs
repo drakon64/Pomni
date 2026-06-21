@@ -13,7 +13,7 @@ internal class PomniPin
     public required Forge Forge { get; init; }
     public required string Repository { get; init; }
 
-    public string? Reference { get; init; }
+    public string? Branch { get; init; }
     public ReferenceType? ReferenceType { get; init; }
     public bool? Frozen { get; init; }
 }

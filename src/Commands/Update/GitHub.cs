@@ -16,9 +16,9 @@ internal partial class Update
             {
                 string branch;
 
-                if (pomniPin.Reference is not null)
+                if (pomniPin.Branch is not null)
                 {
-                    branch = pomniPin.Reference;
+                    branch = pomniPin.Branch;
                 }
                 else
                 {

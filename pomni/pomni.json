@@ -4,7 +4,7 @@
     "nixpkgs": {
       "forge": "github",
       "repository": "NixOS/nixpkgs",
-      "reference": "nixpkgs-unstable",
+      "branch": "nixpkgs-unstable",
       "referenceType": "branch"
     }
   }
