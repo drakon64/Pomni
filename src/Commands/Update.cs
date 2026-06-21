@@ -9,8 +9,8 @@ internal static class Update
 {
     public static async Task UpdateRepositories()
     {
-        await using var pomniJson = File.OpenRead("pomni.json");
-        var pomniLockJson = File.OpenRead("pomni.lock.json");
+        await using var pomniJson = File.OpenRead("pomni/pomni.json");
+        var pomniLockJson = File.OpenRead("pomni/pomni.lock.json");
 
         var pomniPins = await JsonSerializer.DeserializeAsync<Dictionary<string, PomniPin>>(
             pomniJson,
@@ -43,7 +43,7 @@ internal static class Update
                 updatedLocks[pin.Key] = pomniLocks[pin.Key];
         }
 
-        pomniLockJson = File.Open("pomni.lock.json", FileMode.Truncate);
+        pomniLockJson = File.Open("pomni/pomni.lock.json", FileMode.Truncate);
         await pomniLockJson.WriteAsync(
             JsonSerializer.SerializeToUtf8Bytes(
                 updatedLocks,

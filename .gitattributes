@@ -1,3 +1,3 @@
-pomni.json linguist-generated=true
-pomni.lock.json linguist-generated=true
-pomni.nix linguist-generated=true
+pomni/default.nix linguist-generated=true
+pomni/pomni.json linguist-generated=true
+pomni/pomni.lock.json linguist-generated=true

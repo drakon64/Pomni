@@ -7,8 +7,9 @@ internal static class Init
 {
     public static void InitPomniJson()
     {
-        using var pomniJson = File.Open("pomni.json", FileMode.CreateNew);
-        using var pomniLockJson = File.Open("pomni.lock.json", FileMode.CreateNew);
+        Directory.CreateDirectory("pomni");
+        using var pomniJson = File.Open("pomni/pomni.json", FileMode.CreateNew);
+        using var pomniLockJson = File.Open("pomni/pomni.lock.json", FileMode.CreateNew);
 
         pomniJson.Write(
             JsonSerializer.SerializeToUtf8Bytes<Dictionary<string, PomniPin>>(

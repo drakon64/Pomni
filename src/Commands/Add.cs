@@ -15,7 +15,7 @@ internal static class Add
     )
     {
         var pomniJson = JsonSerializer.Deserialize<Dictionary<string, PomniPin>>(
-            File.ReadAllText("pomni.json"),
+            File.ReadAllText("pomni/pomni.json"),
             SourceGenerationContext.Default.DictionaryStringPomniPin
         );
 
@@ -31,7 +31,7 @@ internal static class Add
             }
         );
 
-        using var pomniJsonFile = File.Open("pomni.json", FileMode.Create);
+        using var pomniJsonFile = File.Open("pomni/pomni.json", FileMode.Create);
 
         pomniJsonFile.Write(
             JsonSerializer.SerializeToUtf8Bytes(
