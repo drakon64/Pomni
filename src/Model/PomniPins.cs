@@ -31,7 +31,4 @@ internal enum ReferenceType
 
     [JsonStringEnumMemberName("release")]
     Release,
-
-    [JsonStringEnumMemberName("tag")]
-    Tag,
 }

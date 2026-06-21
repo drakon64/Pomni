@@ -33,8 +33,6 @@ internal partial class Update
             case ReferenceType.Release:
                 sha = await GitHubClient.GetLatestRelease(repo);
                 break;
-            case ReferenceType.Tag:
-                throw new NotImplementedException();
             default:
                 throw new ArgumentException();
         }
