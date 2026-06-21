@@ -7,11 +7,6 @@ internal class Branch
     public required Commit Commit { get; init; }
 }
 
-internal class Commit
-{
-    public required string Sha { get; init; }
-}
-
 internal partial class GitHubClient
 {
     public static async Task<Branch> GetBranch(string repo, string branch)

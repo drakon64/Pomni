@@ -7,28 +7,37 @@ internal partial class Update
 {
     private static async Task<PomniLock> UpdateGitHubRepository(PomniPin pomniPin)
     {
+        var repo = pomniPin.Repository;
         string sha;
 
-        if (pomniPin.ReferenceType is ReferenceType.Branch or null)
+        switch (pomniPin.ReferenceType)
         {
-            var repo = pomniPin.Repository;
-            string branch;
-
-            if (pomniPin.Reference is not null)
+            case ReferenceType.Branch or null:
             {
-                branch = pomniPin.Reference;
-            }
-            else
-            {
-                var getRepo = await GitHubClient.GetRepository(repo);
-                branch = getRepo.DefaultBranch;
-            }
+                string branch;
 
-            var getBranch = await GitHubClient.GetBranch(repo, branch);
-            sha = getBranch.Commit.Sha;
+                if (pomniPin.Reference is not null)
+                {
+                    branch = pomniPin.Reference;
+                }
+                else
+                {
+                    var getRepo = await GitHubClient.GetRepository(repo);
+                    branch = getRepo.DefaultBranch;
+                }
+
+                var getBranch = await GitHubClient.GetBranch(repo, branch);
+                sha = getBranch.Commit.Sha;
+                break;
+            }
+            case ReferenceType.Release:
+                sha = await GitHubClient.GetLatestRelease(repo);
+                break;
+            case ReferenceType.Tag:
+                throw new NotImplementedException();
+            default:
+                throw new ArgumentException();
         }
-        else
-            sha = "";
 
         var url = $"https://github.com/{pomniPin.Repository}/archive/{sha}.tar.gz";
 

@@ -18,5 +18,7 @@ internal static partial class GitHubClient
 
 [JsonSerializable(typeof(Repository))]
 [JsonSerializable(typeof(Branch))]
+[JsonSerializable(typeof(Tag))]
+[JsonSerializable(typeof(Release))]
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower)]
 internal partial class GitHubClientSourceGenerationContext : JsonSerializerContext;
