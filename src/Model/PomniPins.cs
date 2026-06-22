@@ -10,12 +10,12 @@ internal class PomniPins
 
 internal class PomniPin
 {
-    public required Forge Forge { get; init; }
-    public required string Repository { get; init; }
+    public required Forge Forge { get; set; }
+    public required string Repository { get; set; }
 
-    public string? Branch { get; init; }
-    public ReferenceType? Type { get; init; }
-    public bool? Frozen { get; init; }
+    public string? Branch { get; set; }
+    public ReferenceType? Type { get; set; }
+    public bool? Frozen { get; set; }
 }
 
 internal enum Forge

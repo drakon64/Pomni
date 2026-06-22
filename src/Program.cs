@@ -27,11 +27,9 @@ class Program
         addCommand.Arguments.Add(nameArgument);
         addCommand.Arguments.Add(forgeArgument);
         addCommand.Arguments.Add(repositoryArgument);
-
         addCommand.Options.Add(branchOption);
         addCommand.Options.Add(referenceTypeOption);
         addCommand.Options.Add(frozenOption);
-
         addCommand.SetAction(parseResult =>
             Add.AddRepository(
                 parseResult.GetRequiredValue(nameArgument),
@@ -47,6 +45,27 @@ class Program
         var updateCommand = new Command("update");
         updateCommand.SetAction(_ => Update.UpdateRepositories());
         rootCommand.Add(updateCommand);
+
+        var modifyCommand = new Command("modify");
+        var forgeOption = new Option<Forge>("-f", "--forge");
+        var repositoryOption = new Option<string>("-r", "--repository");
+        modifyCommand.Arguments.Add(nameArgument);
+        modifyCommand.Options.Add(forgeOption);
+        modifyCommand.Options.Add(repositoryOption);
+        modifyCommand.Options.Add(branchOption);
+        modifyCommand.Options.Add(referenceTypeOption);
+        modifyCommand.Options.Add(frozenOption);
+        modifyCommand.SetAction(parseResult =>
+            Modify.ModifyRepository(
+                parseResult.GetRequiredValue(nameArgument),
+                parseResult.GetValue(forgeOption),
+                parseResult.GetValue(repositoryOption),
+                parseResult.GetValue(branchOption),
+                parseResult.GetValue(referenceTypeOption),
+                parseResult.GetValue(frozenOption)
+            )
+        );
+        rootCommand.Add(modifyCommand);
 
         var removeCommand = new Command("remove");
         removeCommand.Arguments.Add(nameArgument);
