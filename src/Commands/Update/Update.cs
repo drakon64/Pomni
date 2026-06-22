@@ -79,6 +79,8 @@ internal static partial class Update
 
         var convertProcess = Process.Start(convertProcessStartInfo);
 
-        return await convertProcess.StandardOutput.ReadToEndAsync();
+        var stdout = await convertProcess.StandardOutput.ReadToEndAsync();
+
+        return stdout.TrimEnd('\n');
     }
 }
