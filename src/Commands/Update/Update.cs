@@ -72,8 +72,8 @@ internal static partial class Update
 
         var convertProcessStartInfo = new ProcessStartInfo
         {
-            FileName = "nix",
-            ArgumentList = { "hash", "to-sri", "--type", "sha256", prefetch },
+            FileName = "nix-hash",
+            ArgumentList = { "--type", "sha256", "--to-sri", prefetch },
             RedirectStandardOutput = true,
         };
 
