@@ -48,6 +48,13 @@ class Program
         updateCommand.SetAction(_ => Update.UpdateRepositories());
         rootCommand.Add(updateCommand);
 
+        var removeCommand = new Command("remove");
+        removeCommand.Arguments.Add(nameArgument);
+        removeCommand.SetAction(parseResult =>
+            Remove.RemoveRepository(parseResult.GetRequiredValue(nameArgument))
+        );
+        rootCommand.Add(removeCommand);
+
         var botCommand = new Command("bot");
         rootCommand.Add(botCommand);
 
