@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using Pomni.Model;
 
 namespace Pomni.Commands.Update;
@@ -36,10 +37,23 @@ internal static partial class Update
                     Forge.GitHub => await UpdateGitHubRepository(pin.Value),
                 };
 
+                var newHash = RevisionRegex().Match(updatedPin.Url).Groups[1].Value;
+
                 if (newLock is not null)
+                {
                     updatedLocks[pin.Key] = updatedPin;
+
+                    var oldHash = RevisionRegex().Match(newLock.Url).Groups[1].Value;
+
+                    if (oldHash != newHash)
+                        await Console.Out.WriteLineAsync($"{pin.Key}: {oldHash} -> {newHash}");
+                }
                 else
+                {
                     updatedLocks.Add(pin.Key, updatedPin);
+
+                    await Console.Out.WriteLineAsync($"{pin.Key}: init at {newHash}");
+                }
             }
             else
                 updatedLocks[pin.Key] = pomniLocks[pin.Key];
@@ -83,4 +97,7 @@ internal static partial class Update
 
         return stdout.TrimEnd('\n');
     }
+
+    [GeneratedRegex(@"([a-z0-9]{40})\.tar\.gz$")]
+    private static partial Regex RevisionRegex();
 }
