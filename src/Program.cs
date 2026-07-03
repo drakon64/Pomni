@@ -1,6 +1,5 @@
 ﻿using System.CommandLine;
 using Pomni.Commands;
-using Pomni.Commands.Bot;
 using Pomni.Commands.Update;
 using Pomni.Model;
 
@@ -74,11 +73,6 @@ class Program
             Remove.RemoveRepository(parseResult.GetRequiredValue(nameArgument))
         );
         rootCommand.Add(removeCommand);
-
-        var botCommand = new Command("bot");
-        botCommand.Arguments.Add(forgeArgument);
-        botCommand.SetAction(_ => Bot.GetStorePaths());
-        rootCommand.Add(botCommand);
 
         return rootCommand.Parse(args).Invoke();
     }

@@ -1,10 +1,5 @@
 {
   "version": 1,
-  "derivations": {
-    "shell": {
-      "path": "shell.nix"
-    }
-  },
   "pins": {
     "nixpkgs": {
       "forge": "github",
