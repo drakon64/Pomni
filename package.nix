@@ -2,7 +2,7 @@
   lib,
   buildDotnetModule,
   dotnetCorePackages,
-  #stdenv,
+  stdenv,
 }:
 
 buildDotnetModule {
@@ -14,14 +14,13 @@ buildDotnetModule {
   projectFile = "Pomni.csproj";
   nugetDeps = ./deps.json;
 
-  #buildInputs = [ stdenv.cc ];
+  buildInputs = if stdenv.hostPlatform.isLinux then [ stdenv.cc ] else [ ];
 
   dotnet-sdk = dotnetCorePackages.sdk_10_0;
-  #dotnet-runtime = null;
-  dotnet-runtime = dotnetCorePackages.runtime_10_0;
+  dotnet-runtime = if stdenv.hostPlatform.isDarwin then dotnetCorePackages.runtime_10_0 else null;
 
   executables = [ "pomni" ];
 
-  dotnetFlags = [ "-p:PublishAot=false" ];
-  #selfContainedBuild = true;
+  dotnetFlags = if stdenv.hostPlatform.isDarwin then [ "-p:PublishAot=false" ] else [ ];
+  selfContainedBuild = stdenv.hostPlatform.isLinux;
 }
