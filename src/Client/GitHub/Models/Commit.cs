@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Commit
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class Commit : IAdditionalDataHolder, IParsable
+    internal partial class Commit : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The author property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,13 +102,6 @@ namespace Pomni.Client.GitHub.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.Commit"/> and sets the default values.
-        /// </summary>
-        public Commit()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.Commit"/></returns>
@@ -159,7 +150,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteStringValue("sha", Sha);
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.Commit_stats>("stats", Stats);
             writer.WriteStringValue("url", Url);
-            writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Pomni.Client.GitHub.Models.EmptyObject"/>, <see cref="global::Pomni.Client.GitHub.Models.SimpleUser"/>

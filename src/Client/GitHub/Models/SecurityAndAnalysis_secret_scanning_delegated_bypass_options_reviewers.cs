@@ -9,11 +9,9 @@ namespace Pomni.Client.GitHub.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    internal partial class SecurityAndAnalysis_secret_scanning_delegated_bypass_options_reviewers : IAdditionalDataHolder, IParsable
+    internal partial class SecurityAndAnalysis_secret_scanning_delegated_bypass_options_reviewers : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The bypass mode for the reviewer</summary>
         public global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_secret_scanning_delegated_bypass_options_reviewers_mode? Mode { get; set; }
         /// <summary>The ID of the team or role selected as a bypass reviewer</summary>
@@ -25,7 +23,6 @@ namespace Pomni.Client.GitHub.Models
         /// </summary>
         public SecurityAndAnalysis_secret_scanning_delegated_bypass_options_reviewers()
         {
-            AdditionalData = new Dictionary<string, object>();
             Mode = global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_secret_scanning_delegated_bypass_options_reviewers_mode.ALWAYS;
         }
         /// <summary>
@@ -61,7 +58,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteEnumValue<global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_secret_scanning_delegated_bypass_options_reviewers_mode>("mode", Mode);
             writer.WriteIntValue("reviewer_id", ReviewerId);
             writer.WriteEnumValue<global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_secret_scanning_delegated_bypass_options_reviewers_reviewer_type>("reviewer_type", ReviewerType);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

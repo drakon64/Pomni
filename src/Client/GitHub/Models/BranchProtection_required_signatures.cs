@@ -9,11 +9,9 @@ namespace Pomni.Client.GitHub.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    internal partial class BranchProtection_required_signatures : IAdditionalDataHolder, IParsable
+    internal partial class BranchProtection_required_signatures : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
         /// <summary>The url property</summary>
@@ -24,13 +22,6 @@ namespace Pomni.Client.GitHub.Models
 #else
         public string Url { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.BranchProtection_required_signatures"/> and sets the default values.
-        /// </summary>
-        public BranchProtection_required_signatures()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -62,7 +53,6 @@ namespace Pomni.Client.GitHub.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("url", Url);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

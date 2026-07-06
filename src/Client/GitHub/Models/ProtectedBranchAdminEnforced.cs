@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Protected Branch Admin Enforced
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class ProtectedBranchAdminEnforced : IAdditionalDataHolder, IParsable
+    internal partial class ProtectedBranchAdminEnforced : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
         /// <summary>The url property</summary>
@@ -25,13 +23,6 @@ namespace Pomni.Client.GitHub.Models
 #else
         public string Url { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.ProtectedBranchAdminEnforced"/> and sets the default values.
-        /// </summary>
-        public ProtectedBranchAdminEnforced()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -63,7 +54,6 @@ namespace Pomni.Client.GitHub.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("url", Url);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Data related to a release.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class ReleaseAsset : IAdditionalDataHolder, IParsable
+    internal partial class ReleaseAsset : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The browser_download_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -92,13 +90,6 @@ namespace Pomni.Client.GitHub.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.ReleaseAsset"/> and sets the default values.
-        /// </summary>
-        public ReleaseAsset()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.ReleaseAsset"/></returns>
@@ -153,7 +144,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.NullableSimpleUser>("uploader", Uploader);
             writer.WriteStringValue("url", Url);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

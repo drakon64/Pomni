@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Branch With Protection
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class BranchWithProtection : IAdditionalDataHolder, IParsable
+    internal partial class BranchWithProtection : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Commit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,13 +66,6 @@ namespace Pomni.Client.GitHub.Models
         /// <summary>The required_approving_review_count property</summary>
         public int? RequiredApprovingReviewCount { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.BranchWithProtection"/> and sets the default values.
-        /// </summary>
-        public BranchWithProtection()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.BranchWithProtection"/></returns>
@@ -117,7 +108,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.BranchProtection>("protection", Protection);
             writer.WriteStringValue("protection_url", ProtectionUrl);
             writer.WriteIntValue("required_approving_review_count", RequiredApprovingReviewCount);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

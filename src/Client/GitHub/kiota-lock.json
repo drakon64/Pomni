@@ -9,7 +9,7 @@
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": true,
-  "includeAdditionalData": true,
+  "includeAdditionalData": false,
   "disableSSLValidation": false,
   "serializers": [
     "none"

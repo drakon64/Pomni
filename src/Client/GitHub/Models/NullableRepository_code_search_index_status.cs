@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// The status of the code search index for this repository
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class NullableRepository_code_search_index_status : IAdditionalDataHolder, IParsable
+    internal partial class NullableRepository_code_search_index_status : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The lexical_commit_sha property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,13 +23,6 @@ namespace Pomni.Client.GitHub.Models
 #endif
         /// <summary>The lexical_search_ok property</summary>
         public bool? LexicalSearchOk { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.NullableRepository_code_search_index_status"/> and sets the default values.
-        /// </summary>
-        public NullableRepository_code_search_index_status()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -63,7 +54,6 @@ namespace Pomni.Client.GitHub.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("lexical_commit_sha", LexicalCommitSha);
             writer.WriteBoolValue("lexical_search_ok", LexicalSearchOk);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

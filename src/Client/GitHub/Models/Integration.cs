@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class Integration : IAdditionalDataHolder, IParsable
+    internal partial class Integration : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The client_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,13 +102,6 @@ namespace Pomni.Client.GitHub.Models
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.Integration"/> and sets the default values.
-        /// </summary>
-        public Integration()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.Integration"/></returns>
@@ -165,7 +156,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.Integration_permissions>("permissions", Permissions);
             writer.WriteStringValue("slug", Slug);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
-            writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Pomni.Client.GitHub.Models.Enterprise"/>, <see cref="global::Pomni.Client.GitHub.Models.SimpleUser"/>

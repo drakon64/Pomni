@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class BranchProtection_lock_branch : IAdditionalDataHolder, IParsable
+    internal partial class BranchProtection_lock_branch : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
         /// <summary>
@@ -22,7 +20,6 @@ namespace Pomni.Client.GitHub.Models
         /// </summary>
         public BranchProtection_lock_branch()
         {
-            AdditionalData = new Dictionary<string, object>();
             Enabled = false;
         }
         /// <summary>
@@ -54,7 +51,6 @@ namespace Pomni.Client.GitHub.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

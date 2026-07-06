@@ -9,11 +9,9 @@ namespace Pomni.Client.GitHub.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    internal partial class BranchRestrictionPolicy_apps : IAdditionalDataHolder, IParsable
+    internal partial class BranchRestrictionPolicy_apps : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The client_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,13 +111,6 @@ namespace Pomni.Client.GitHub.Models
         public string UpdatedAt { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.BranchRestrictionPolicy_apps"/> and sets the default values.
-        /// </summary>
-        public BranchRestrictionPolicy_apps()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.BranchRestrictionPolicy_apps"/></returns>
@@ -172,7 +163,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.BranchRestrictionPolicy_apps_permissions>("permissions", Permissions);
             writer.WriteStringValue("slug", Slug);
             writer.WriteStringValue("updated_at", UpdatedAt);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

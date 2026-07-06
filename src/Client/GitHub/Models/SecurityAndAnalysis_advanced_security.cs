@@ -11,19 +11,10 @@ namespace Pomni.Client.GitHub.Models
     /// Enable or disable GitHub Advanced Security for the repository.For standalone Code Scanning or Secret Protection products, this parameter cannot be used.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class SecurityAndAnalysis_advanced_security : IAdditionalDataHolder, IParsable
+    internal partial class SecurityAndAnalysis_advanced_security : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The status property</summary>
         public global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_advanced_security_status? Status { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_advanced_security"/> and sets the default values.
-        /// </summary>
-        public SecurityAndAnalysis_advanced_security()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -53,7 +44,6 @@ namespace Pomni.Client.GitHub.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_advanced_security_status>("status", Status);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

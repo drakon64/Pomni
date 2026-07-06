@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// A release.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class Release : IAdditionalDataHolder, IParsable
+    internal partial class Release : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The assets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -168,13 +166,6 @@ namespace Pomni.Client.GitHub.Models
         public string ZipballUrl { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.Release"/> and sets the default values.
-        /// </summary>
-        public Release()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.Release"/></returns>
@@ -251,7 +242,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteStringValue("upload_url", UploadUrl);
             writer.WriteStringValue("url", Url);
             writer.WriteStringValue("zipball_url", ZipballUrl);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -11,17 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class FullRepository_custom_properties : IAdditionalDataHolder, IParsable
+    internal partial class FullRepository_custom_properties : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.FullRepository_custom_properties"/> and sets the default values.
-        /// </summary>
-        public FullRepository_custom_properties()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -49,7 +40,6 @@ namespace Pomni.Client.GitHub.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

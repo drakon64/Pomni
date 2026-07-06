@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Diff Entry
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class DiffEntry : IAdditionalDataHolder, IParsable
+    internal partial class DiffEntry : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The additions property</summary>
         public int? Additions { get; set; }
         /// <summary>The blob_url property</summary>
@@ -80,13 +78,6 @@ namespace Pomni.Client.GitHub.Models
         /// <summary>The status property</summary>
         public global::Pomni.Client.GitHub.Models.DiffEntry_status? Status { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.DiffEntry"/> and sets the default values.
-        /// </summary>
-        public DiffEntry()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.DiffEntry"/></returns>
@@ -135,7 +126,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteStringValue("raw_url", RawUrl);
             writer.WriteStringValue("sha", Sha);
             writer.WriteEnumValue<global::Pomni.Client.GitHub.Models.DiffEntry_status>("status", Status);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -9,24 +9,15 @@ namespace Pomni.Client.GitHub.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    internal partial class Commit_stats : IAdditionalDataHolder, IParsable
+    internal partial class Commit_stats : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The additions property</summary>
         public int? Additions { get; set; }
         /// <summary>The deletions property</summary>
         public int? Deletions { get; set; }
         /// <summary>The total property</summary>
         public int? Total { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.Commit_stats"/> and sets the default values.
-        /// </summary>
-        public Commit_stats()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -60,7 +51,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteIntValue("additions", Additions);
             writer.WriteIntValue("deletions", Deletions);
             writer.WriteIntValue("total", Total);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

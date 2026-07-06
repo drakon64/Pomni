@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class BranchProtection_allow_fork_syncing : IAdditionalDataHolder, IParsable
+    internal partial class BranchProtection_allow_fork_syncing : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
         /// <summary>
@@ -22,7 +20,6 @@ namespace Pomni.Client.GitHub.Models
         /// </summary>
         public BranchProtection_allow_fork_syncing()
         {
-            AdditionalData = new Dictionary<string, object>();
             Enabled = false;
         }
         /// <summary>
@@ -54,7 +51,6 @@ namespace Pomni.Client.GitHub.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

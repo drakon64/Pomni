@@ -9,11 +9,9 @@ namespace Pomni.Client.GitHub.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    internal partial class SecurityAndAnalysis : IAdditionalDataHolder, IParsable
+    internal partial class SecurityAndAnalysis : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Enable or disable GitHub Advanced Security for the repository.For standalone Code Scanning or Secret Protection products, this parameter cannot be used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,13 +93,6 @@ namespace Pomni.Client.GitHub.Models
         public global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_secret_scanning_push_protection SecretScanningPushProtection { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.SecurityAndAnalysis"/> and sets the default values.
-        /// </summary>
-        public SecurityAndAnalysis()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.SecurityAndAnalysis"/></returns>
@@ -148,7 +139,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_secret_scanning_delegated_bypass_options>("secret_scanning_delegated_bypass_options", SecretScanningDelegatedBypassOptions);
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_secret_scanning_non_provider_patterns>("secret_scanning_non_provider_patterns", SecretScanningNonProviderPatterns);
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.SecurityAndAnalysis_secret_scanning_push_protection>("secret_scanning_push_protection", SecretScanningPushProtection);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

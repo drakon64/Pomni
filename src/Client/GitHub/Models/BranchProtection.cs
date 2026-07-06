@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Branch Protection
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class BranchProtection : IAdditionalDataHolder, IParsable
+    internal partial class BranchProtection : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The allow_deletions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,13 +136,6 @@ namespace Pomni.Client.GitHub.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.BranchProtection"/> and sets the default values.
-        /// </summary>
-        public BranchProtection()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.BranchProtection"/></returns>
@@ -203,7 +194,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.ProtectedBranchRequiredStatusCheck>("required_status_checks", RequiredStatusChecks);
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.BranchRestrictionPolicy>("restrictions", Restrictions);
             writer.WriteStringValue("url", Url);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

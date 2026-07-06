@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Metaproperties for Git author/committer information.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class NullableGitUser : IAdditionalDataHolder, IParsable
+    internal partial class NullableGitUser : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The date property</summary>
         public DateTimeOffset? Date { get; set; }
         /// <summary>The email property</summary>
@@ -33,13 +31,6 @@ namespace Pomni.Client.GitHub.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.NullableGitUser"/> and sets the default values.
-        /// </summary>
-        public NullableGitUser()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -73,7 +64,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteDateTimeOffsetValue("date", Date);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("name", Name);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

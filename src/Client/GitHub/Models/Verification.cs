@@ -9,11 +9,9 @@ namespace Pomni.Client.GitHub.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    internal partial class Verification : IAdditionalDataHolder, IParsable
+    internal partial class Verification : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The payload property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,13 +46,6 @@ namespace Pomni.Client.GitHub.Models
 #else
         public string VerifiedAt { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.Verification"/> and sets the default values.
-        /// </summary>
-        public Verification()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -92,7 +83,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteStringValue("signature", Signature);
             writer.WriteBoolValue("verified", Verified);
             writer.WriteStringValue("verified_at", VerifiedAt);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

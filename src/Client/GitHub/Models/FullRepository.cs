@@ -11,10 +11,8 @@ namespace Pomni.Client.GitHub.Models
     /// Full Repository
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class FullRepository : IAdditionalDataHolder, IParsable
+    internal partial class FullRepository : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The allow_auto_merge property</summary>
         public bool? AllowAutoMerge { get; set; }
         /// <summary>The allow_forking property</summary>
@@ -610,7 +608,6 @@ namespace Pomni.Client.GitHub.Models
         /// </summary>
         public FullRepository()
         {
-            AdditionalData = new Dictionary<string, object>();
             AnonymousAccessEnabled = true;
         }
         /// <summary>
@@ -846,7 +843,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteIntValue("watchers", Watchers);
             writer.WriteIntValue("watchers_count", WatchersCount);
             writer.WriteBoolValue("web_commit_signoff_required", WebCommitSignoffRequired);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

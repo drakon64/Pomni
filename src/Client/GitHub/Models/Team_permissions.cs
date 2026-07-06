@@ -9,11 +9,9 @@ namespace Pomni.Client.GitHub.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    internal partial class Team_permissions : IAdditionalDataHolder, IParsable
+    internal partial class Team_permissions : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The admin property</summary>
         public bool? Admin { get; set; }
         /// <summary>The maintain property</summary>
@@ -24,13 +22,6 @@ namespace Pomni.Client.GitHub.Models
         public bool? Push { get; set; }
         /// <summary>The triage property</summary>
         public bool? Triage { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.Team_permissions"/> and sets the default values.
-        /// </summary>
-        public Team_permissions()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -68,7 +59,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteBoolValue("pull", Pull);
             writer.WriteBoolValue("push", Push);
             writer.WriteBoolValue("triage", Triage);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

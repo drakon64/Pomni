@@ -11,12 +11,10 @@ namespace Pomni.Client.GitHub.Models
     /// Groups of organization members that gives permissions on specified repositories.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    internal partial class Team : IAdditionalDataHolder, IParsable
+    internal partial class Team : IParsable
     {
         /// <summary>How the team&apos;s access to the repository was granted. This property is onlypresent when the team is returned in a repository context, such as`GET /repos/{owner}/{repo}/teams`.</summary>
         public global::Pomni.Client.GitHub.Models.Team_access_source? AccessSource { get; set; }
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -130,13 +128,6 @@ namespace Pomni.Client.GitHub.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.Team"/> and sets the default values.
-        /// </summary>
-        public Team()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.Team"/></returns>
@@ -199,7 +190,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteStringValue("slug", Slug);
             writer.WriteEnumValue<global::Pomni.Client.GitHub.Models.Team_type>("type", Type);
             writer.WriteStringValue("url", Url);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

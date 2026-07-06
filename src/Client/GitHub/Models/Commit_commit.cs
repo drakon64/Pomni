@@ -9,11 +9,9 @@ namespace Pomni.Client.GitHub.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    internal partial class Commit_commit : IAdditionalDataHolder, IParsable
+    internal partial class Commit_commit : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Metaproperties for Git author/committer information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,13 +63,6 @@ namespace Pomni.Client.GitHub.Models
         public global::Pomni.Client.GitHub.Models.Verification Verification { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Pomni.Client.GitHub.Models.Commit_commit"/> and sets the default values.
-        /// </summary>
-        public Commit_commit()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Pomni.Client.GitHub.Models.Commit_commit"/></returns>
@@ -112,7 +103,6 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.Commit_commit_tree>("tree", Tree);
             writer.WriteStringValue("url", Url);
             writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.Verification>("verification", Verification);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }
