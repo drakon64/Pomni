@@ -1,3 +1,5 @@
+src/Client/** linguist-generated=true
+
 deps.json linguist-generated=true
 
 pomni/default.nix linguist-generated=true

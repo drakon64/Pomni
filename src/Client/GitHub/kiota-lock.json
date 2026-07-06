@@ -1,0 +1,35 @@
+{
+  "descriptionHash": "6AA2F76CD2EA7277DBDCE1D40E75001608B0057BDE64E532E6CF278F10C8136860D68C6063FB47391EAC3724BAB3A2621847B60B7314B80A4E117CFCC72B8E12",
+  "descriptionLocation": "https://raw.githubusercontent.com/github/rest-api-description/refs/heads/main/descriptions/api.github.com/api.github.com.2026-03-10.yaml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.32.5",
+  "clientClassName": "GitHubClient",
+  "typeAccessModifier": "Internal",
+  "clientNamespaceName": "Pomni.Client.GitHub",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": true,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "none"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [
+    "/repos/{owner}/{repo}",
+    "/repos/{owner}/{repo}/branches/{branch}",
+    "/repos/{owner}/{repo}/releases/latest",
+    "/repos/{owner}/{repo}/git/ref/{ref}"
+  ],
+  "excludePatterns": [],
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
+}

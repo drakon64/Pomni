@@ -1,4 +1,7 @@
 ﻿using System.CommandLine;
+using Microsoft.Kiota.Abstractions.Authentication;
+using Microsoft.Kiota.Http.HttpClientLibrary;
+using Pomni.Client.GitHub;
 using Pomni.Commands;
 using Pomni.Commands.Update;
 using Pomni.Model;
@@ -7,6 +10,10 @@ namespace Pomni;
 
 class Program
 {
+    private static readonly AnonymousAuthenticationProvider AuthProvider = new();
+    private static readonly HttpClientRequestAdapter Adapter = new(AuthProvider);
+    internal static readonly Lazy<GitHubClient> GitHubClient = new(() => new GitHubClient(Adapter));
+
     private static int Main(string[] args)
     {
         var rootCommand = new RootCommand("Nix dependency pinning");

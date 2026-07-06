@@ -1,4 +1,3 @@
-using Pomni.Client.GitHub;
 using Pomni.Model;
 
 namespace Pomni.Commands.Update;
@@ -7,7 +6,7 @@ internal partial class Update
 {
     private static async Task<PomniLock> UpdateGitHubRepository(PomniPin pomniPin)
     {
-        var repo = pomniPin.Repository;
+        var repo = pomniPin.Repository.Split('/');
         string sha;
 
         switch (pomniPin.Type)
@@ -22,16 +21,37 @@ internal partial class Update
                 }
                 else
                 {
-                    var getRepo = await GitHubClient.GetRepository(repo);
+                    var getRepo = await Program
+                        .GitHubClient.Value.Repos[repo[0]][repo[1]]
+                        .GetAsync();
+
                     branch = getRepo.DefaultBranch;
                 }
 
-                var getBranch = await GitHubClient.GetBranch(repo, branch);
+                var getBranch = await Program
+                    .GitHubClient.Value.Repos[repo[0]][repo[1]]
+                    .Branches[branch]
+                    .GetAsync();
+
                 sha = getBranch.Commit.Sha;
                 break;
             }
             case ReferenceType.Release:
-                sha = await GitHubClient.GetLatestRelease(repo);
+                var tag = (
+                    await Program
+                        .GitHubClient.Value.Repos[repo[0]][repo[1]]
+                        .Releases.Latest.GetAsync()
+                ).TagName;
+
+                sha = (
+                    await Program
+                        .GitHubClient.Value.Repos[repo[0]][repo[1]]
+                        .Git.Ref[$"tags/{tag}"]
+                        .GetAsync()
+                )
+                    .Object
+                    .Sha;
+
                 break;
             default:
                 throw new ArgumentException();

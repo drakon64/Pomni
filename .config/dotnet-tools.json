@@ -8,6 +8,13 @@
         "csharpier"
       ],
       "rollForward": false
+    },
+    "microsoft.openapi.kiota": {
+      "version": "1.32.5",
+      "commands": [
+        "kiota"
+      ],
+      "rollForward": false
     }
   }
 }
