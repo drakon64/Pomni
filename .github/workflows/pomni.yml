@@ -7,6 +7,10 @@ jobs:
   bot:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -17,6 +21,14 @@ jobs:
           name: drakon64
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - run: nix-shell -A pomni --run "pomni bot"
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - run: nix-shell -A pomni --run "exit"
+
+      - run: |
+          nix-shell -A pomni --run "pomni modify nixpkgs --branch master"
+          nix-shell -A pomni --run "pomni bot github"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BEARER_TOKEN: ${{ secrets.GITHUB_TOKEN }}

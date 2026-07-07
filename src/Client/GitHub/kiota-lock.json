@@ -1,5 +1,5 @@
 {
-  "descriptionHash": "525372341E6A8EDAD5768D1019F711B6566FD66954F5FD816104F44C737CC1D6CCE9C7BFB9F1B697AEE5DE84724A39215E3B2D98330AD2E7D32E3797C88F0159",
+  "descriptionHash": "8903C257AE32B7F618C5A24DDB3E979DD7549D5338628CBDA34817CA9906769179486F85A234416BC1B3D7FDA1202408752C800352064DA60034BFFE64B62E5A",
   "descriptionLocation": "https://raw.githubusercontent.com/github/rest-api-description/refs/heads/main/descriptions/api.github.com/api.github.com.2026-03-10.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.32.5",
@@ -12,7 +12,7 @@
   "includeAdditionalData": false,
   "disableSSLValidation": false,
   "serializers": [
-    "none"
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory"
   ],
   "deserializers": [
     "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory"
@@ -24,7 +24,10 @@
     "/repos/{owner}/{repo}#GET",
     "/repos/{owner}/{repo}/branches/{branch}#GET",
     "/repos/{owner}/{repo}/releases/latest#GET",
-    "/repos/{owner}/{repo}/git/ref/{ref}#GET"
+    "/repos/{owner}/{repo}/git/ref/{ref}#GET",
+    "/repos/{owner}/{repo}/pulls#GET",
+    "/repos/{owner}/{repo}/pulls#POST",
+    "/repos/{owner}/{repo}/pulls/{pull_number}#PATCH"
   ],
   "excludePatterns": [],
   "disabledValidationRules": [],
