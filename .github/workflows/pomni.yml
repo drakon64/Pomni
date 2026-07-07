@@ -1,0 +1,22 @@
+name: Pomni
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: canidae-solutions/lix-quick-install-action@v4
+
+      - uses: cachix/cachix-action@v17
+        with:
+          name: drakon64
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - run: nix-shell -A pomni --run "pomni bot"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
