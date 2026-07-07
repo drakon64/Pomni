@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Pomni.Client.GitHub.Models;
 using Pomni.Client.GitHub.Repos.Item.Item.Branches;
 using Pomni.Client.GitHub.Repos.Item.Item.Git;
+using Pomni.Client.GitHub.Repos.Item.Item.Pulls;
 using Pomni.Client.GitHub.Repos.Item.Item.Releases;
 using System.Collections.Generic;
 using System.IO;
@@ -29,6 +30,11 @@ namespace Pomni.Client.GitHub.Repos.Item.Item
         public global::Pomni.Client.GitHub.Repos.Item.Item.Git.GitRequestBuilder Git
         {
             get => new global::Pomni.Client.GitHub.Repos.Item.Item.Git.GitRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pulls property</summary>
+        public global::Pomni.Client.GitHub.Repos.Item.Item.Pulls.PullsRequestBuilder Pulls
+        {
+            get => new global::Pomni.Client.GitHub.Repos.Item.Item.Pulls.PullsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The releases property</summary>
         public global::Pomni.Client.GitHub.Repos.Item.Item.Releases.ReleasesRequestBuilder Releases

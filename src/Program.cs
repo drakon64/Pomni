@@ -1,8 +1,9 @@
 ﻿using System.CommandLine;
-using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
+using Pomni.Authorization;
 using Pomni.Client.GitHub;
 using Pomni.Commands;
+using Pomni.Commands.Bot;
 using Pomni.Commands.Update;
 using Pomni.Model;
 
@@ -10,7 +11,11 @@ namespace Pomni;
 
 class Program
 {
-    private static readonly AnonymousAuthenticationProvider AuthProvider = new();
+    private static readonly BearerAuthenticationProvider AuthProvider = new()
+    {
+        ApiKey = Environment.GetEnvironmentVariable("BEARER_TOKEN"),
+    };
+
     private static readonly HttpClientRequestAdapter Adapter = new(AuthProvider);
     internal static readonly Lazy<GitHubClient> GitHubClient = new(() => new GitHubClient(Adapter));
 
@@ -80,6 +85,13 @@ class Program
             Remove.RemoveRepository(parseResult.GetRequiredValue(nameArgument))
         );
         rootCommand.Add(removeCommand);
+
+        var botCommand = new Command("bot");
+        botCommand.Arguments.Add(forgeArgument);
+        botCommand.SetAction(parseResult =>
+            Bot.BotCommand(parseResult.GetRequiredValue(forgeArgument))
+        );
+        rootCommand.Add(botCommand);
 
         return rootCommand.Parse(args).Invoke();
     }
