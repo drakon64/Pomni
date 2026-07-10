@@ -1,6 +1,10 @@
 {
   "nixpkgs": {
-    "url": "https://github.com/NixOS/nixpkgs/archive/05988b07fb05cbcb50be6bce197b4b5f75b5e61b.tar.gz",
-    "hash": "sha256-3S92fSuv32mjJz2Qb2F4405c21J55F4NIphz5K6hxco="
+    "url": "https://github.com/NixOS/nixpkgs/archive/58ad1b6d00bd52293a78dbec8f5171d748323c00.tar.gz",
+    "hash": "sha256-qhe8IqWufUZU4Xde1yMWswhekXQWrbs6EFKTIvMXado="
+  },
+  "lix": {
+    "url": "https://github.com/lix-project/lix/archive/3b286bbd624f1b3209f6d5366845564fac20b86a.tar.gz",
+    "hash": "sha256-3PcSdgUV8yjx5WyOkyR8QnbVmkAd3/4TrWx87aqeNWk="
   }
 }
