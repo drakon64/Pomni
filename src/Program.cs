@@ -23,19 +23,41 @@ class Program
     {
         var rootCommand = new RootCommand("Nix dependency pinning");
 
-        var initCommand = new Command("init");
+        var initCommand = new Command("init", "Create Pomni files");
         initCommand.SetAction(_ => Init.InitPomniJson());
         rootCommand.Add(initCommand);
 
-        var nameArgument = new Argument<string>("name");
-        var forgeArgument = new Argument<Forge>("forge");
-        var repositoryArgument = new Argument<string>("repository");
+        var nameArgument = new Argument<string>("name")
+        {
+            Description = "The name of the pin"
+        };
 
-        var branchOption = new Option<string>("-b", "--branch");
-        var referenceTypeOption = new Option<ReferenceType?>("-t", "--type");
-        var frozenOption = new Option<bool>("-f", "--frozen");
+        var forgeArgument = new Argument<Forge>("forge")
+        {
+            Description = "The Git forge of the pin"
+        };
+        
+        var repositoryArgument = new Argument<string>("repository")
+        {
+            Description = "The Git repository of the pin"
+        };
 
-        var addCommand = new Command("add");
+        var branchOption = new Option<string>("-b", "--branch")
+        {
+            Description = "The branch of the Git repository to use for the pin"
+        };
+        
+        var referenceTypeOption = new Option<ReferenceType?>("-t", "--type")
+        {
+            Description = "Whether the pin should track a Git branch or releases"
+        };
+        
+        var frozenOption = new Option<bool>("-f", "--frozen")
+        {
+            Description = "Prevent the pin being updated by the `update` command"
+        };
+
+        var addCommand = new Command("add", "Add a new pin");
         addCommand.Arguments.Add(nameArgument);
         addCommand.Arguments.Add(forgeArgument);
         addCommand.Arguments.Add(repositoryArgument);
@@ -54,13 +76,22 @@ class Program
         );
         rootCommand.Add(addCommand);
 
-        var updateCommand = new Command("update");
+        var updateCommand = new Command("update", "Update pins to their latest commit or release");
         updateCommand.SetAction(_ => Update.UpdateRepositories());
         rootCommand.Add(updateCommand);
 
-        var modifyCommand = new Command("modify");
-        var forgeOption = new Option<Forge>("-f", "--forge");
-        var repositoryOption = new Option<string>("-r", "--repository");
+        var modifyCommand = new Command("modify", "Modify an existing pin");
+        
+        var forgeOption = new Option<Forge>("-f", "--forge")
+        {
+            Description = "The Git forge of the pin"
+        };
+        
+        var repositoryOption = new Option<string>("-r", "--repository")
+        {
+            Description = "The Git repository of the pin"
+        };
+        
         modifyCommand.Arguments.Add(nameArgument);
         modifyCommand.Options.Add(forgeOption);
         modifyCommand.Options.Add(repositoryOption);
@@ -79,14 +110,14 @@ class Program
         );
         rootCommand.Add(modifyCommand);
 
-        var removeCommand = new Command("remove");
+        var removeCommand = new Command("remove", "Remove a pin");
         removeCommand.Arguments.Add(nameArgument);
         removeCommand.SetAction(parseResult =>
             Remove.RemoveRepository(parseResult.GetRequiredValue(nameArgument))
         );
         rootCommand.Add(removeCommand);
 
-        var botCommand = new Command("bot");
+        var botCommand = new Command("bot", "Raise a pull request for pin updates");
         botCommand.Arguments.Add(forgeArgument);
         botCommand.SetAction(parseResult =>
             Bot.BotCommand(parseResult.GetRequiredValue(forgeArgument))
