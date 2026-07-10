@@ -12,7 +12,10 @@ internal static partial class Bot
             .GetEnvironmentVariable("GITHUB_REPOSITORY")
             .Split('/');
 
-        private static readonly string Base = Environment.GetEnvironmentVariable("GITHUB_REF_NAME");
+        private static readonly string Base =
+            Environment.GetEnvironmentVariable("GITHUB_REF_NAME")
+            ?? throw new InvalidOperationException("GITHUB_REF_NAME is null");
+
         private const string Head = "pomni/bot";
 
         public static async Task RaiseOrModifyPullRequest()
