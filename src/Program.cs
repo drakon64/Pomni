@@ -115,9 +115,15 @@ class Program
         rootCommand.Add(removeCommand);
 
         var botCommand = new Command("bot", "Raise a pull request for pin updates");
-        botCommand.Arguments.Add(forgeArgument);
+
+        var botForgeArgument = new Argument<Forge>("forge")
+        {
+            Description = "The Git forge to raise the pull request in",
+        };
+
+        botCommand.Arguments.Add(botForgeArgument);
         botCommand.SetAction(parseResult =>
-            Bot.BotCommand(parseResult.GetRequiredValue(forgeArgument))
+            Bot.BotCommand(parseResult.GetRequiredValue(botForgeArgument))
         );
         rootCommand.Add(botCommand);
 
