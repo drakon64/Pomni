@@ -5,6 +5,10 @@
       "forge": "github",
       "repository": "NixOS/nixpkgs",
       "branch": "nixpkgs-unstable"
+    },
+    "lix": {
+      "forge": "github",
+      "repository": "lix-project/lix"
     }
   }
 }

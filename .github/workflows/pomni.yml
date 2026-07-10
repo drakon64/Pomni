@@ -23,7 +23,7 @@ jobs:
       - uses: cachix/cachix-action@v17
         with:
           name: drakon64
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - run: |
           git config user.name "github-actions[bot]"
@@ -31,6 +31,8 @@ jobs:
 
       - run: nix-shell -A pomni --run "exit"
 
-      - run: nix-shell -A pomni --run "pomni bot github"
+      - run: |
+          nix-shell -A pomni --run "pomni modify nixpkgs --branch master"
+          nix-shell -A pomni --run "pomni bot github"
         env:
           BEARER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
