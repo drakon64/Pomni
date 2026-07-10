@@ -24,7 +24,7 @@ internal static partial class Bot
         if (gitCheckoutProcess.ExitCode != 0)
             throw new Exception(await gitCheckoutProcess.StandardError.ReadToEndAsync());
 
-        await UpdateRepositories();
+        var updatedPins = await UpdateRepositories();
 
         var gitDiff = new ProcessStartInfo
         {
@@ -88,7 +88,7 @@ internal static partial class Bot
         switch (forge)
         {
             case Forge.GitHub:
-                await GitHub.RaiseOrModifyPullRequest();
+                await GitHub.RaiseOrModifyPullRequest(updatedPins);
                 break;
         }
     }

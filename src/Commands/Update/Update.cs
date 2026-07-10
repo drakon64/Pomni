@@ -7,7 +7,7 @@ namespace Pomni.Commands.Update;
 
 internal static partial class Update
 {
-    public static async Task UpdateRepositories()
+    public static async Task<UpdatedPin[]> UpdateRepositories()
     {
         await using var pomniJson = File.OpenRead("pomni/pomni.json");
         var pomniLockJson = File.OpenRead("pomni/pomni.lock.json");
@@ -25,6 +25,7 @@ internal static partial class Update
         await pomniLockJson.DisposeAsync();
 
         var updatedLocks = new Dictionary<string, PomniLock>();
+        var updatedPins = new List<UpdatedPin>();
 
         foreach (var pin in pomniPins.Pins)
         {
@@ -45,12 +46,24 @@ internal static partial class Update
 
                     var oldHash = RevisionRegex().Match(newLock.Url).Groups[1].Value;
 
-                    if (oldHash != newHash)
-                        await Console.Out.WriteLineAsync($"{pin.Key}: {oldHash} -> {newHash}");
+                    if (oldHash == newHash)
+                        continue;
+
+                    updatedPins.Add(
+                        new UpdatedPin
+                        {
+                            Pin = pin.Key,
+                            OldRev = oldHash,
+                            NewRev = newHash,
+                        }
+                    );
+
+                    await Console.Out.WriteLineAsync($"{pin.Key}: {oldHash} -> {newHash}");
                 }
                 else
                 {
                     updatedLocks.Add(pin.Key, updatedPin);
+                    updatedPins.Add(new UpdatedPin { Pin = pin.Key, NewRev = newHash });
 
                     await Console.Out.WriteLineAsync($"{pin.Key}: init at {newHash}");
                 }
@@ -67,6 +80,8 @@ internal static partial class Update
             )
         );
         await pomniLockJson.DisposeAsync();
+
+        return updatedPins.ToArray();
     }
 
     private static async Task<string> GetSri(string url)
@@ -96,6 +111,13 @@ internal static partial class Update
         var stdout = await convertProcess.StandardOutput.ReadToEndAsync();
 
         return stdout.TrimEnd('\n');
+    }
+
+    internal class UpdatedPin
+    {
+        public required string Pin { get; init; }
+        public string? OldRev { get; init; }
+        public required string NewRev { get; init; }
     }
 
     [GeneratedRegex(@"([a-z0-9]{40})\.tar\.gz$")]

@@ -1,6 +1,8 @@
+using System.Text;
 using Pomni.Client.GitHub.Models;
 using Pomni.Client.GitHub.Repos.Item.Item.Pulls;
 using Pomni.Client.GitHub.Repos.Item.Item.Pulls.Item;
+using static Pomni.Commands.Update.Update;
 
 namespace Pomni.Commands.Bot;
 
@@ -18,14 +20,14 @@ internal static partial class Bot
 
         private static readonly string Head = $"{Repository[0]}:pomni/bot";
 
-        public static async Task RaiseOrModifyPullRequest()
+        public static async Task RaiseOrModifyPullRequest(UpdatedPin[] updatedPins)
         {
             var pullRequest = await GetPullRequest();
 
             if (pullRequest != null)
-                await ModifyPullRequest((int)pullRequest.Number);
+                await ModifyPullRequest((int)pullRequest.Number, updatedPins);
             else
-                await RaisePullRequest();
+                await RaisePullRequest(updatedPins);
         }
 
         private static async Task<PullRequestSimple?> GetPullRequest()
@@ -45,7 +47,7 @@ internal static partial class Bot
             return pullRequest.Length == 1 ? pullRequest[0] : null;
         }
 
-        private static async Task RaisePullRequest()
+        private static async Task RaisePullRequest(UpdatedPin[] updatedPins)
         {
             var pullRequest = await Program
                 .GitHubClient.Value.Repos[Repository[0]][Repository[1]]
@@ -55,20 +57,41 @@ internal static partial class Bot
                         Title = Title,
                         Head = Head,
                         Base = Base,
+                        Body = WritePullRequestBody(updatedPins),
                     }
                 );
 
             await Console.Out.WriteLineAsync($"Pull request: {pullRequest.Url}");
         }
 
-        private static async Task ModifyPullRequest(int pullNumber)
+        private static async Task ModifyPullRequest(int pullNumber, UpdatedPin[] updatedPins)
         {
             var pullRequest = await Program
                 .GitHubClient.Value.Repos[Repository[0]][Repository[1]]
                 .Pulls[pullNumber]
-                .PatchAsync(new WithPull_numberPatchRequestBody { Title = Title, Base = Base });
+                .PatchAsync(
+                    new WithPull_numberPatchRequestBody
+                    {
+                        Title = Title,
+                        Body = WritePullRequestBody(updatedPins),
+                        Base = Base,
+                    }
+                );
 
             await Console.Out.WriteLineAsync($"Pull request: {pullRequest.Url}");
+        }
+
+        private static string WritePullRequestBody(UpdatedPin[] updatedPins)
+        {
+            var stringBuilder = new StringBuilder();
+
+            foreach (var pin in updatedPins)
+                if (pin.OldRev is not null)
+                    stringBuilder.AppendLine($"`{pin.Pin}`: `{pin.OldRev}` -> `{pin.NewRev}`");
+                else
+                    stringBuilder.AppendLine($"`{pin.Pin}`: init at `{pin.NewRev}`");
+
+            return stringBuilder.ToString();
         }
     }
 }
