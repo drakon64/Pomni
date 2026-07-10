@@ -29,6 +29,8 @@ jobs:
 
       - run: nix-shell -A pomni --run "exit"
 
-      - run: nix-shell -A pomni --run "pomni bot github"
+      - run: |
+          nix-shell -A pomni --run "pomni modify nixpkgs --branch master"
+          nix-shell -A pomni --run "pomni bot github"
         env:
           BEARER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
