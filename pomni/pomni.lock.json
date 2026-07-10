@@ -1,6 +1,6 @@
 {
   "nixpkgs": {
-    "url": "https://github.com/NixOS/nixpkgs/archive/05988b07fb05cbcb50be6bce197b4b5f75b5e61b.tar.gz",
-    "hash": "sha256-3S92fSuv32mjJz2Qb2F4405c21J55F4NIphz5K6hxco="
+    "url": "https://github.com/NixOS/nixpkgs/archive/389ed85304b281ca7f306cf8a1eb4378651ca44e.tar.gz",
+    "hash": "sha256-3WcjOiOyK4UuhA\u002BwowfiwLe8vLYp/EZgHDGV/jkk\u002BQ8="
   }
 }
