@@ -113,13 +113,13 @@ internal static partial class Update
         return stdout.TrimEnd('\n');
     }
 
-    internal class UpdatedPin
-    {
-        public required string Pin { get; init; }
-        public string? OldRev { get; init; }
-        public required string NewRev { get; init; }
-    }
-
     [GeneratedRegex(@"([a-z0-9]{40})\.tar\.gz$")]
     private static partial Regex RevisionRegex();
+}
+
+internal class UpdatedPin
+{
+    public required string Pin { get; init; }
+    public string? OldRev { get; init; }
+    public required string NewRev { get; init; }
 }

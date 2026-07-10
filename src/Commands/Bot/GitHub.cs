@@ -2,7 +2,7 @@ using System.Text;
 using Pomni.Client.GitHub.Models;
 using Pomni.Client.GitHub.Repos.Item.Item.Pulls;
 using Pomni.Client.GitHub.Repos.Item.Item.Pulls.Item;
-using static Pomni.Commands.Update.Update;
+using Pomni.Commands.Update;
 
 namespace Pomni.Commands.Bot;
 
