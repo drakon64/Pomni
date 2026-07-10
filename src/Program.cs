@@ -27,34 +27,31 @@ class Program
         initCommand.SetAction(_ => Init.InitPomniJson());
         rootCommand.Add(initCommand);
 
-        var nameArgument = new Argument<string>("name")
-        {
-            Description = "The name of the pin"
-        };
+        var nameArgument = new Argument<string>("name") { Description = "The name of the pin" };
 
         var forgeArgument = new Argument<Forge>("forge")
         {
-            Description = "The Git forge of the pin"
+            Description = "The Git forge of the pin",
         };
-        
+
         var repositoryArgument = new Argument<string>("repository")
         {
-            Description = "The Git repository of the pin"
+            Description = "The Git repository of the pin",
         };
 
         var branchOption = new Option<string>("-b", "--branch")
         {
-            Description = "The branch of the Git repository to use for the pin"
+            Description = "The branch of the Git repository to use for the pin",
         };
-        
+
         var referenceTypeOption = new Option<ReferenceType?>("-t", "--type")
         {
-            Description = "Whether the pin should track a Git branch or releases"
+            Description = "Whether the pin should track a Git branch or releases",
         };
-        
+
         var frozenOption = new Option<bool>("-f", "--frozen")
         {
-            Description = "Prevent the pin being updated by the `update` command"
+            Description = "Prevent the pin being updated by the `update` command",
         };
 
         var addCommand = new Command("add", "Add a new pin");
@@ -81,17 +78,17 @@ class Program
         rootCommand.Add(updateCommand);
 
         var modifyCommand = new Command("modify", "Modify an existing pin");
-        
+
         var forgeOption = new Option<Forge>("-f", "--forge")
         {
-            Description = "The Git forge of the pin"
+            Description = "The Git forge of the pin",
         };
-        
+
         var repositoryOption = new Option<string>("-r", "--repository")
         {
-            Description = "The Git repository of the pin"
+            Description = "The Git repository of the pin",
         };
-        
+
         modifyCommand.Arguments.Add(nameArgument);
         modifyCommand.Options.Add(forgeOption);
         modifyCommand.Options.Add(repositoryOption);
