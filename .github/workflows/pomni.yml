@@ -3,6 +3,8 @@ name: Pomni
 on:
   schedule:
     - cron: "0 12 * * *"
+      timezone: Europe/London
+
   workflow_dispatch:
 
 jobs:
