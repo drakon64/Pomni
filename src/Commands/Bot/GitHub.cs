@@ -25,9 +25,7 @@ internal static partial class Bot
             var pullRequest = await GetPullRequest();
 
             if (pullRequest != null)
-            {
                 await ModifyPullRequest((int)pullRequest.Number);
-            }
             else
                 await RaisePullRequest();
         }
