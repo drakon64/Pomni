@@ -88,9 +88,9 @@ internal static partial class Bot
 
             foreach (var pin in updatedPins)
                 if (pin.OldRev is not null)
-                    stringBuilder.AppendLine($"`{pin.Pin}`: `{pin.OldRev}` -> `{pin.NewRev}`");
+                    stringBuilder.AppendLine($"- {pin.Pin}: `{pin.OldRev}` -> `{pin.NewRev}`");
                 else
-                    stringBuilder.AppendLine($"`{pin.Pin}`: init at `{pin.NewRev}`");
+                    stringBuilder.AppendLine($"- {pin.Pin}: init at `{pin.NewRev}`");
 
             return stringBuilder.ToString();
         }
