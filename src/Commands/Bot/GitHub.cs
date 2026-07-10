@@ -10,9 +10,10 @@ internal static partial class Bot
 {
     public static class GitHub
     {
-        private static readonly string[] Repository = Environment
-            .GetEnvironmentVariable("GITHUB_REPOSITORY")
-            .Split('/');
+        private static readonly string[] Repository = (
+            Environment.GetEnvironmentVariable("GITHUB_REPOSITORY")
+            ?? throw new InvalidOperationException("GITHUB_REPOSITORY is null")
+        ).Split('/');
 
         private static readonly string Base =
             Environment.GetEnvironmentVariable("GITHUB_REF_NAME")
