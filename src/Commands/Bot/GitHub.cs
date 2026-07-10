@@ -65,10 +65,12 @@ internal static partial class Bot
 
         private static async Task ModifyPullRequest(int pullNumber)
         {
-            await Program
+            var pullRequest = await Program
                 .GitHubClient.Value.Repos[Repository[0]][Repository[1]]
                 .Pulls[pullNumber]
                 .PatchAsync(new WithPull_numberPatchRequestBody { Title = Title, Base = Base });
+
+            await Console.Out.WriteLineAsync($"Pull request: {pullRequest.Url}");
         }
     }
 }
