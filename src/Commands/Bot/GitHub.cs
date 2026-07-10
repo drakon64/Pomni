@@ -20,6 +20,8 @@ internal static partial class Bot
 
         public static async Task RaiseOrModifyPullRequest()
         {
+            await Console.Out.WriteLineAsync($"Base branch: {Base}");
+
             var pullRequest = await GetPullRequest();
 
             if (pullRequest != null)
