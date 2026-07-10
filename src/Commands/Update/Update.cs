@@ -53,6 +53,7 @@ internal static partial class Update
                         new UpdatedPin
                         {
                             Pin = pin.Key,
+                            Repository = pin.Value.Repository,
                             OldRev = oldHash,
                             NewRev = newHash,
                         }
@@ -63,7 +64,15 @@ internal static partial class Update
                 else
                 {
                     updatedLocks.Add(pin.Key, updatedPin);
-                    updatedPins.Add(new UpdatedPin { Pin = pin.Key, NewRev = newHash });
+
+                    updatedPins.Add(
+                        new UpdatedPin
+                        {
+                            Pin = pin.Key,
+                            Repository = pin.Value.Repository,
+                            NewRev = newHash,
+                        }
+                    );
 
                     await Console.Out.WriteLineAsync($"{pin.Key}: init at {newHash}");
                 }
@@ -120,6 +129,7 @@ internal static partial class Update
 internal class UpdatedPin
 {
     public required string Pin { get; init; }
+    public required string Repository { get; init; }
     public string? OldRev { get; init; }
     public required string NewRev { get; init; }
 }
