@@ -16,12 +16,10 @@ internal static partial class Bot
             Environment.GetEnvironmentVariable("GITHUB_REF_NAME")
             ?? throw new InvalidOperationException("GITHUB_REF_NAME is null");
 
-        private const string Head = "pomni/bot";
+        private static readonly string Head = $"{Repository[0]}:pomni/bot";
 
         public static async Task RaiseOrModifyPullRequest()
         {
-            await Console.Out.WriteLineAsync($"Base branch: {Base}");
-
             var pullRequest = await GetPullRequest();
 
             if (pullRequest != null)
