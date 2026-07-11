@@ -4,8 +4,9 @@ Nix dependency locking and updating, inspired by [Lon](https://github.com/nikstu
 
 ## Features
 
+- Management via CLI or hand-editable `pomni.json` file
 - Resolves tarball URLs and Git revisions via GitHub API
-- Supports pinning Git branches or (GitHub) releases
+- Supports pinning Git branches or GitHub releases
 
 ## Usage
 
@@ -35,6 +36,8 @@ Commands:
 pomni add nixpkgs github NixOS/nixpkgs --branch nixpkgs-unstable
 pomni add lix github lix-project/lix # Uses the default branch of the repository
 pomni add crane github ipetkov/crane --type release # Uses the latest GitHub release within the repository
+
+pomni update # Required to sync `pomni.json` with `pomni.lock.json`
 ```
 
 ### Updating pins
