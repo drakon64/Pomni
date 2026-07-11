@@ -21,7 +21,7 @@ class Program
 
     private static int Main(string[] args)
     {
-        var rootCommand = new RootCommand("Nix dependency pinning");
+        var rootCommand = new RootCommand("Lock & update Nix dependencies");
 
         var initCommand = new Command("init", "Create Pomni files");
         initCommand.SetAction(_ => Init.InitPomniJson());
