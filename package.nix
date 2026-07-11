@@ -12,10 +12,14 @@ buildDotnetModule (finalAttrs: {
 
   src = ./src;
 
+  strictDeps = true;
+  __structuredAttrs = true;
+
   projectFile = "Pomni.csproj";
   nugetDeps = ./deps.json;
 
-  buildInputs = [ stdenv.cc ] ++ lib.optional stdenv.hostPlatform.isDarwin darwin.ICU;
+  nativeBuildInputs = [ stdenv.cc ];
+  buildInputs = lib.optional stdenv.hostPlatform.isDarwin darwin.ICU;
 
   dotnet-sdk = dotnetCorePackages.sdk_10_0;
   dotnet-runtime = null;
