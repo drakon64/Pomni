@@ -25,6 +25,8 @@ buildDotnetModule (finalAttrs: {
   selfContainedBuild = true;
 
   meta = {
+    description = "Nix dependency locking and updating";
+    homepage = "https://github.com/drakon64/Pomni";
     license = lib.licenses.eupl12;
     mainProgram = "pomni";
     maintainers = with lib.maintainers; [ drakon64 ];
