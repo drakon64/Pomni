@@ -31,7 +31,7 @@
         {
           default = {
             type = "app";
-            program = (pkgs.lib.getExe (pkgs.callPackage ./package.nix { }));
+            program = pkgs.lib.getExe (pkgs.callPackage ./package.nix { });
           };
         }
       );
