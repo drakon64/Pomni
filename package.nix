@@ -6,7 +6,7 @@
   darwin,
 }:
 
-buildDotnetModule {
+buildDotnetModule (finalAttrs: {
   pname = "pomni";
   version = "1.0.0";
 
@@ -29,4 +29,4 @@ buildDotnetModule {
     mainProgram = "pomni";
     maintainers = with lib.maintainers; [ drakon64 ];
   };
-}
+})
