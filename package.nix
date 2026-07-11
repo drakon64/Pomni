@@ -8,7 +8,7 @@
 
 buildDotnetModule {
   pname = "pomni";
-  version = "0.0.1";
+  version = "1.0.0";
 
   src = ./src;
 
