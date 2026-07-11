@@ -31,6 +31,7 @@ builtins.mapAttrs (
     sha256 = args.hash;
   })
 ) (builtins.fromJSON (builtins.readFile ./pomni.lock.json))
+
 """u8
         );
     }
