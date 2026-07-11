@@ -23,4 +23,10 @@ buildDotnetModule {
   executables = [ "pomni" ];
 
   selfContainedBuild = true;
+
+  meta = {
+    license = lib.licenses.eupl12;
+    mainProgram = "pomni";
+    maintainers = with lib.maintainers; [ drakon64 ];
+  };
 }
