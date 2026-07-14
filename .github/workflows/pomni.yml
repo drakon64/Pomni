@@ -30,7 +30,20 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - run: nix-shell -A pomni --run "exit"
+        
+      - run: |
+          echo "OLD_HASH=$(nix eval --expr 'import ./default.nix { }' --raw --impure)" >> $GITHUB_ENV
+          echo "OLD_SHELL_HASH=$(nix eval --expr 'import ./shell.nix { }' --raw --impure)" >> $GITHUB_ENV
+
+      - run: nix-shell -A pomni --run "pomni update"
+
+      - run: |
+          echo "NEW_HASH=$(nix-build)" >> $GITHUB_ENV
+          echo "NEW_SHELL_HASH=$(nix eval --expr 'import ./shell.nix { }' --raw --impure)" >> $GITHUB_ENV
+
+      - run: git checkout pomni/pomni.lock.json
 
       - run: nix-shell -A pomni --run "pomni bot github"
         env:
           BEARER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ env.NEW_HASH != env.OLD_HASH || env.NEW_SHELL_HASH != env.OLD_SHELL_HASH }}
