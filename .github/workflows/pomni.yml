@@ -42,6 +42,7 @@ jobs:
           echo "NEW_SHELL_HASH=$(nix eval --expr 'import ./shell.nix { }' --raw --impure)" >> $GITHUB_ENV
 
       - run: git checkout pomni/pomni.lock.json
+        if: ${{ env.NEW_HASH != env.OLD_HASH || env.NEW_SHELL_HASH != env.OLD_SHELL_HASH }}
 
       - run: nix-shell -A pomni --run "pomni bot github"
         env:
