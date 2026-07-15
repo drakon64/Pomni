@@ -18,15 +18,15 @@ buildDotnetModule (finalAttrs: {
   projectFile = "Pomni.csproj";
   nugetDeps = ./deps.json;
 
+  # Required for Native AOT
   nativeBuildInputs = [ stdenv.cc ];
   buildInputs = lib.optional stdenv.hostPlatform.isDarwin darwin.ICU;
+  selfContainedBuild = true;
 
   dotnet-sdk = dotnetCorePackages.sdk_10_0;
-  dotnet-runtime = null;
+  dotnet-runtime = null; # No runtime required for Native AOT
 
   executables = [ "pomni" ];
-
-  selfContainedBuild = true;
 
   meta = {
     description = "Nix dependency locking and updating";
