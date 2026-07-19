@@ -1,0 +1,35 @@
+{
+  "descriptionHash": "2CD269E553D06568205082FB5977C1C1E590EACA7E6E0122BB42F480AE6F120F078AFBB09D1CC56BDE67D2C2333CF8AA5FCB13282BDE75864672BC1CA95AD19B",
+  "descriptionLocation": "https://codeberg.org/swagger.v1.json",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.34.1",
+  "clientClassName": "CodebergClient",
+  "typeAccessModifier": "Internal",
+  "clientNamespaceName": "Pomni.Client.Codeberg",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": true,
+  "includeAdditionalData": false,
+  "disableSSLValidation": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json"
+  ],
+  "includePatterns": [
+    "/repos/{owner}/{repo}#GET",
+    "/repos/{owner}/{repo}/branches/{branch}#GET",
+    "/repos/{owner}/{repo}/releases/latest#GET",
+    "/repos/{owner}/{repo}/git/refs/{ref}#GET",
+    "/repos/{owner}/{repo}/pulls#GET",
+    "/repos/{owner}/{repo}/pulls#POST",
+    "/repos/{owner}/{repo}/pulls/{pull_number}#PATCH"
+  ],
+  "excludePatterns": [],
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
+}

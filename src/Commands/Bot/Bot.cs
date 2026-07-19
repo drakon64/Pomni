@@ -87,6 +87,10 @@ internal static partial class Bot
 
         switch (forge)
         {
+            case Forge.Codeberg:
+                await Codeberg.RaiseOrModifyPullRequest(updatedPins);
+                break;
+
             case Forge.GitHub:
                 await GitHub.RaiseOrModifyPullRequest(updatedPins);
                 break;

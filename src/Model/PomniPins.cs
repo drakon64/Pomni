@@ -22,6 +22,9 @@ internal class PomniPin
 
 internal enum Forge
 {
+    [JsonStringEnumMemberName("codeberg")]
+    Codeberg,
+
     [JsonStringEnumMemberName("github")]
     GitHub,
 }

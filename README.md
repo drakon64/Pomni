@@ -5,8 +5,8 @@ Nix dependency locking and updating, inspired by [Lon](https://github.com/nikstu
 ## Features
 
 - Management via CLI or hand-editable `pomni.json` file
-- Resolves tarball URLs and Git revisions via GitHub API
-- Supports pinning Git branches or GitHub releases
+- Resolves tarball URLs and Git revisions via Codeberg/GitHub API
+- Supports pinning Git branches or Codeberg/GitHub releases
 
 ## Usage
 
@@ -22,12 +22,12 @@ Options:
   --version       Show version information
 
 Commands:
-  init                              Create Pomni files
-  add <name> <GitHub> <repository>  Add a new pin
-  update                            Update pins to their latest commit or release
-  modify <name>                     Modify an existing pin
-  remove <name>                     Remove a pin
-  bot <GitHub>                      Raise a pull request for pin updates
+  init                                       Create Pomni files
+  add <name> <Codeberg|GitHub> <repository>  Add a new pin
+  update                                     Update pins to their latest commit or release
+  modify <name>                              Modify an existing pin
+  remove <name>                              Remove a pin
+  bot <Codeberg|GitHub>                      Raise a pull request for pin updates
 ```
 
 ### Getting the CLI

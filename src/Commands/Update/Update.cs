@@ -35,6 +35,7 @@ internal static partial class Update
 
                 var updatedPin = pin.Value.Forge switch
                 {
+                    Forge.Codeberg => await Codeberg.UpdateRepository(pin.Value),
                     Forge.GitHub => await GitHub.UpdateRepository(pin.Value),
                 };
 
