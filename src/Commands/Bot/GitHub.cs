@@ -33,8 +33,8 @@ internal static partial class Bot
 
         private static async Task<PullRequestSimple?> GetPullRequest()
         {
-            var pullRequests = await Program
-                .GitHubClient.Value.Repos[Repository[0]][Repository[1]]
+            var pullRequests = await Update
+                .GitHub.Client.Repos[Repository[0]][Repository[1]]
                 .Pulls.GetAsync(x =>
                 {
                     x.QueryParameters.State = GetStateQueryParameterType.Open;
@@ -50,8 +50,8 @@ internal static partial class Bot
 
         private static async Task RaisePullRequest(UpdatedPin[] updatedPins)
         {
-            var pullRequest = await Program
-                .GitHubClient.Value.Repos[Repository[0]][Repository[1]]
+            var pullRequest = await Update
+                .GitHub.Client.Repos[Repository[0]][Repository[1]]
                 .Pulls.PostAsync(
                     new PullsPostRequestBody
                     {
@@ -67,8 +67,8 @@ internal static partial class Bot
 
         private static async Task ModifyPullRequest(int pullNumber, UpdatedPin[] updatedPins)
         {
-            var pullRequest = await Program
-                .GitHubClient.Value.Repos[Repository[0]][Repository[1]]
+            var pullRequest = await Update
+                .GitHub.Client.Repos[Repository[0]][Repository[1]]
                 .Pulls[pullNumber]
                 .PatchAsync(
                     new WithPull_numberPatchRequestBody

@@ -1,10 +1,21 @@
+using Microsoft.Kiota.Abstractions;
+using Microsoft.Kiota.Abstractions.Authentication;
+using Microsoft.Kiota.Http.HttpClientLibrary;
+using Pomni.Client.GitHub;
 using Pomni.Model;
 
 namespace Pomni.Commands.Update;
 
-internal partial class Update
+internal static class GitHub
 {
-    private static async Task<PomniLock> UpdateGitHubRepository(PomniPin pomniPin)
+    private static readonly BearerAuthenticationProvider AuthProvider = new()
+    {
+        ApiKey = Environment.GetEnvironmentVariable("BEARER_TOKEN"),
+    };
+    private static readonly HttpClientRequestAdapter Adapter = new(AuthProvider);
+    internal static readonly GitHubClient Client = new(Adapter);
+
+    internal static async Task<PomniLock> UpdateRepository(PomniPin pomniPin)
     {
         var repo = pomniPin.Repository.Split('/');
         string sha;
@@ -21,34 +32,20 @@ internal partial class Update
                 }
                 else
                 {
-                    var getRepo = await Program
-                        .GitHubClient.Value.Repos[repo[0]][repo[1]]
-                        .GetAsync();
+                    var getRepo = await Client.Repos[repo[0]][repo[1]].GetAsync();
 
                     branch = getRepo.DefaultBranch;
                 }
 
-                var getBranch = await Program
-                    .GitHubClient.Value.Repos[repo[0]][repo[1]]
-                    .Branches[branch]
-                    .GetAsync();
+                var getBranch = await Client.Repos[repo[0]][repo[1]].Branches[branch].GetAsync();
 
                 sha = getBranch.Commit.Sha;
                 break;
             }
             case ReferenceType.Release:
-                var tag = (
-                    await Program
-                        .GitHubClient.Value.Repos[repo[0]][repo[1]]
-                        .Releases.Latest.GetAsync()
-                ).TagName;
+                var tag = (await Client.Repos[repo[0]][repo[1]].Releases.Latest.GetAsync()).TagName;
 
-                sha = (
-                    await Program
-                        .GitHubClient.Value.Repos[repo[0]][repo[1]]
-                        .Git.Ref[$"tags/{tag}"]
-                        .GetAsync()
-                )
+                sha = (await Client.Repos[repo[0]][repo[1]].Git.Ref[$"tags/{tag}"].GetAsync())
                     .Object
                     .Sha;
 
@@ -59,6 +56,23 @@ internal partial class Update
 
         var url = $"https://github.com/{pomniPin.Repository}/archive/{sha}.tar.gz";
 
-        return new PomniLock { Url = url, Hash = await GetSri(url) };
+        return new PomniLock { Url = url, Hash = await Update.GetSri(url) };
+    }
+
+    private class BearerAuthenticationProvider : IAuthenticationProvider
+    {
+        internal string? ApiKey { get; init; }
+
+        public Task AuthenticateRequestAsync(
+            RequestInformation request,
+            Dictionary<string, object>? additionalAuthenticationContext = null,
+            CancellationToken cancellationToken = new()
+        )
+        {
+            if (ApiKey is not null)
+                request.Headers.Add("Authorization", $"Bearer {ApiKey}");
+
+            return Task.CompletedTask;
+        }
     }
 }

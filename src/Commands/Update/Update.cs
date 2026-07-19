@@ -35,7 +35,7 @@ internal static partial class Update
 
                 var updatedPin = pin.Value.Forge switch
                 {
-                    Forge.GitHub => await UpdateGitHubRepository(pin.Value),
+                    Forge.GitHub => await GitHub.UpdateRepository(pin.Value),
                 };
 
                 var newHash = RevisionRegex().Match(updatedPin.Url).Groups[1].Value;
@@ -93,7 +93,7 @@ internal static partial class Update
         return updatedPins.ToArray();
     }
 
-    private static async Task<string> GetSri(string url)
+    public static async Task<string> GetSri(string url)
     {
         var prefetchProcessStartInfo = new ProcessStartInfo
         {
