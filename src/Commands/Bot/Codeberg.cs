@@ -10,13 +10,13 @@ internal static partial class Bot
     public static class Codeberg
     {
         private static readonly string[] Repository = (
-            Environment.GetEnvironmentVariable("GITHUB_REPOSITORY")
-            ?? throw new InvalidOperationException("GITHUB_REPOSITORY is null")
+            Environment.GetEnvironmentVariable("FORGEJO_REPOSITORY")
+            ?? throw new InvalidOperationException("FORGEJO_REPOSITORY is null")
         ).Split('/');
 
         private static readonly string Base =
-            Environment.GetEnvironmentVariable("GITHUB_REF_NAME")
-            ?? throw new InvalidOperationException("GITHUB_REF_NAME is null");
+            Environment.GetEnvironmentVariable("FORGEJO_REF_NAME")
+            ?? throw new InvalidOperationException("FORGEJO_REF_NAME is null");
 
         private static readonly string Head = $"{Repository[0]}:pomni/bot";
 
