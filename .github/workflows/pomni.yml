@@ -36,6 +36,8 @@ jobs:
           echo "OLD_SHELL_HASH=$(nix eval --expr 'import ./shell.nix { }' --raw --impure)" >> $GITHUB_ENV
 
       - run: nix-shell -A pomni --run "pomni update"
+        env:
+          BEARER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: |
           echo "NEW_HASH=$(nix-build)" >> $GITHUB_ENV
