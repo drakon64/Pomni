@@ -225,6 +225,14 @@ namespace Pomni.Client.GitHub.Models
 #else
         public string ReviewCommentUrl { get; set; }
 #endif
+        /// <summary>The stack information associated with a pull request.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Pomni.Client.GitHub.Models.PullRequestStack? Stack { get; set; }
+#nullable restore
+#else
+        public global::Pomni.Client.GitHub.Models.PullRequestStack Stack { get; set; }
+#endif
         /// <summary>State of this Pull Request. Either `open` or `closed`.</summary>
         public global::Pomni.Client.GitHub.Models.PullRequest_state? State { get; set; }
         /// <summary>The statuses_url property</summary>
@@ -319,6 +327,7 @@ namespace Pomni.Client.GitHub.Models
                 { "review_comment_url", n => { ReviewCommentUrl = n.GetStringValue(); } },
                 { "review_comments", n => { ReviewComments = n.GetIntValue(); } },
                 { "review_comments_url", n => { ReviewCommentsUrl = n.GetStringValue(); } },
+                { "stack", n => { Stack = n.GetObjectValue<global::Pomni.Client.GitHub.Models.PullRequestStack>(global::Pomni.Client.GitHub.Models.PullRequestStack.CreateFromDiscriminatorValue); } },
                 { "state", n => { State = n.GetEnumValue<global::Pomni.Client.GitHub.Models.PullRequest_state>(); } },
                 { "statuses_url", n => { StatusesUrl = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -374,6 +383,7 @@ namespace Pomni.Client.GitHub.Models
             writer.WriteIntValue("review_comments", ReviewComments);
             writer.WriteStringValue("review_comments_url", ReviewCommentsUrl);
             writer.WriteStringValue("review_comment_url", ReviewCommentUrl);
+            writer.WriteObjectValue<global::Pomni.Client.GitHub.Models.PullRequestStack>("stack", Stack);
             writer.WriteEnumValue<global::Pomni.Client.GitHub.Models.PullRequest_state>("state", State);
             writer.WriteStringValue("statuses_url", StatusesUrl);
             writer.WriteStringValue("title", Title);
