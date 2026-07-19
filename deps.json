@@ -15,34 +15,14 @@
     "hash": "sha256-vTpcCiHDNaDE7slU7C0ebP7g9TD7hS5/Mushl/by9Sc="
   },
   {
-    "pname": "Microsoft.Kiota.Bundle",
-    "version": "2.0.0",
-    "hash": "sha256-qBxPXJa884XUWSrvarA+s28DFrhwcW+0X93O7T+2Ink="
-  },
-  {
     "pname": "Microsoft.Kiota.Http.HttpClientLibrary",
     "version": "2.0.0",
     "hash": "sha256-sYQHaCZlES6FvGkWYAhwhPocFRQevrLW/8ZAjN8YyE8="
   },
   {
-    "pname": "Microsoft.Kiota.Serialization.Form",
-    "version": "2.0.0",
-    "hash": "sha256-D/QX/mt2Yg+q8ZUf0cLdD+C7slqTF8kaU3DgtZI1FXg="
-  },
-  {
     "pname": "Microsoft.Kiota.Serialization.Json",
     "version": "2.0.0",
     "hash": "sha256-1bzWjJui+N2RY5sKQGX4fQ2kJ7AfHjIf76cX2kXCFD0="
-  },
-  {
-    "pname": "Microsoft.Kiota.Serialization.Multipart",
-    "version": "2.0.0",
-    "hash": "sha256-582wl6HXnE7/e98tD7mLP9waalxF2PUnl6Ogh1neSGk="
-  },
-  {
-    "pname": "Microsoft.Kiota.Serialization.Text",
-    "version": "2.0.0",
-    "hash": "sha256-VSavUvB92SSaF4DpPxquYcQDKiME07pxCNi9PAkjaCE="
   },
   {
     "pname": "Std.UriTemplate",
