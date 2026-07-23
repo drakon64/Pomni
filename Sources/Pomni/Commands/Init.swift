@@ -12,6 +12,9 @@ extension Pomni {
 
       try! "{}".write(toFile: path + "/pomni.lock.json", atomically: true, encoding: .utf8)
 
+      try! String(decoding: Data(PackageResources.default_nix), as: UTF8.self).write(
+        toFile: path + "/default.nix", atomically: true, encoding: .utf8)
+
       let jsonEncoder = JSONEncoder()
       jsonEncoder.outputFormatting = .prettyPrinted
       let pomniJson = try! jsonEncoder.encode(PomniJson(version: 1, pins: [:]).self)
