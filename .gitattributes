@@ -1,6 +1,4 @@
-src/Client/** linguist-generated=true
-
-deps.json linguist-generated=true
+Package.resolved linguist-generated=true
 
 pomni/default.nix linguist-generated=true
 pomni/pomni.lock.json linguist-generated=true
