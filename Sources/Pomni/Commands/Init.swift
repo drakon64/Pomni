@@ -19,7 +19,6 @@ extension Pomni {
 
       // Write the `pomni.json` file by JSON encoding the `PomniJson` class with some default values
       // `pins` will be populated by the `add` command once the file is written
-      let jsonEncoder = JSONEncoder()
       jsonEncoder.outputFormatting = .prettyPrinted
       let pomniJson = try! jsonEncoder.encode(PomniJson(version: 1, pins: [:]).self)
       fileManager.createFile(atPath: path + "/pomni.json", contents: pomniJson)
