@@ -23,7 +23,7 @@ jobs:
       - uses: cachix/cachix-action@v17
         with:
           name: drakon64
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - run: |
           git config user.name "github-actions[bot]"

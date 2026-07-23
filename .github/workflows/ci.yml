@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  release:
+    types: 
+      - released
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: canidae-solutions/lix-quick-install-action@v4
+
+      - uses: cachix/cachix-action@v17
+        with:
+          name: drakon64
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - run: echo "STORE_PATH=$(nix-build)" >> "$GITHUB_OUTPUT"
+        id: build
+
+      - run: echo "${{ steps.build.outputs.STORE_PATH }}" | cachix push drakon64
+
+      - run: cachix pin drakon64 pomni "${{ steps.build.outputs.STORE_PATH }}" --keep-revisions 1
+        if: ${{ github.event_name == "release" }}
