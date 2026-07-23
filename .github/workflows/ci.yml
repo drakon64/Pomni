@@ -27,4 +27,4 @@ jobs:
       - run: echo "${{ steps.build.outputs.STORE_PATH }}" | cachix push drakon64
 
       - run: cachix pin drakon64 pomni "${{ steps.build.outputs.STORE_PATH }}" --keep-revisions 1
-        if: ${{ github.event_name == "release" }}
+        if: github.event_name == 'release'
