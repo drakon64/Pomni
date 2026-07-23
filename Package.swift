@@ -13,8 +13,9 @@ let package = Package(
     // Targets can depend on other targets in this package and products from dependencies.
     .executableTarget(
       name: "Pomni",
-      dependencies: [.product(name: "ArgumentParser", package: "swift-argument-parser")]
+      dependencies: [.product(name: "ArgumentParser", package: "swift-argument-parser")],
+      resources: [.embedInCode("Resources/default.nix")],
     )
   ],
-  swiftLanguageModes: [.v6]
+  swiftLanguageModes: [.v6],
 )
