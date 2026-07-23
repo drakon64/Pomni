@@ -1,4 +1,7 @@
 import ArgumentParser
+import Foundation
+
+let jsonEncoder = JSONEncoder()
 
 @main
 struct Pomni: ParsableCommand {
