@@ -6,10 +6,17 @@ struct PomniJson: Codable {
 struct Pin: Codable {
   let forge: Forge
   let repository: String
-  let branch: String
+  let pinType: PinType?
+  let branch: String?
+  let frozen: Bool?
 }
 
 enum Forge: Codable {
   case Codeberg
   case GitHub
+}
+
+enum PinType: Codable {
+  case Branch
+  case Release
 }
