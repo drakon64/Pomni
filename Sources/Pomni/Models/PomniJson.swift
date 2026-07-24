@@ -12,7 +12,7 @@ struct Pin: Codable {
 }
 
 enum Forge: Codable {
-  case Codeberg
+  case Forgejo
   case GitHub
 }
 
