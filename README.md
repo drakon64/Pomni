@@ -32,17 +32,9 @@ Commands:
 
 ### Getting the CLI
 
-#### Non-Flakes
-
 ```shell
 nix-build https://github.com/drakon64/Pomni/archive/refs/heads/main.zip
 ./result/bin/pomni
-```
-
-#### Flakes
-
-```shell
-nix run github:drakon64/pomni
 ```
 
 ### Adding a pin
