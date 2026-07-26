@@ -10,7 +10,7 @@ struct Pin: Codable {
   var repository: String
   var type: PinType?
   var branch: String?
-  var frozen: Bool
+  var frozen: Bool? = false
 }
 
 enum Forge: String, Codable, ExpressibleByArgument {

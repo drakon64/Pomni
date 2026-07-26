@@ -4,7 +4,8 @@
       "branch" : "nixpkgs-unstable",
       "forge" : "github",
       "frozen" : false,
-      "repository" : "NixOS\/nixpkgs"
+      "repository" : "NixOS\/nixpkgs",
+      "type" : "branch"
     }
   },
   "version" : 2
