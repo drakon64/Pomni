@@ -1,0 +1,8 @@
+generate:
+  - types
+  - client
+accessModifier: package
+filter:
+  operations:
+    - repos/get
+namingStrategy: idiomatic
