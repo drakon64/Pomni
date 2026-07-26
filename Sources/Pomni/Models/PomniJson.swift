@@ -1,22 +1,22 @@
+import ArgumentParser
+
 struct PomniJson: Codable {
   let version: Int
-  let pins: [String: Pin]
+  var pins: [String: Pin] = [:]
 }
 
 struct Pin: Codable {
   let forge: Forge
   let repository: String
-  let pinType: PinType?
+  let type: PinType?
   let branch: String?
-  let frozen: Bool?
+  let frozen: Bool
 }
 
-enum Forge: Codable {
-  case Forgejo
-  case GitHub
+enum Forge: String, Codable, ExpressibleByArgument {
+  case forgejo, github
 }
 
-enum PinType: Codable {
-  case Branch
-  case Release
+enum PinType: String, Codable, ExpressibleByArgument {
+  case branch, release
 }

@@ -1,6 +1,11 @@
 {
-  "version" : 2,
   "pins" : {
-
-  }
+    "nixpkgs" : {
+      "branch" : "nixpkgs-unstable",
+      "forge" : "github",
+      "frozen" : false,
+      "repository" : "NixOS\/nixpkgs"
+    }
+  },
+  "version" : 2
 }
