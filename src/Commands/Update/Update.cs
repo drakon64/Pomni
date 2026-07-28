@@ -1,7 +1,8 @@
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using Pomni.Model;
+using Pomni.Models;
+using SourceGenerationContext = Pomni.Models.SourceGenerationContext;
 
 namespace Pomni.Commands.Update;
 

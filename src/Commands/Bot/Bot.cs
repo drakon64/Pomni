@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using Pomni.Model;
+using Pomni.Models;
 using static Pomni.Commands.Update.Update;
 
 namespace Pomni.Commands.Bot;

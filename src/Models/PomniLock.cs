@@ -1,4 +1,4 @@
-namespace Pomni.Model;
+namespace Pomni.Models;
 
 internal class PomniLock
 {

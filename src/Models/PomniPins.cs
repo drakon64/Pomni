@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Pomni.Model;
+namespace Pomni.Models;
 
 internal class PomniPins
 {

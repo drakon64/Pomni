@@ -2,7 +2,7 @@ using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 using Pomni.Client.Codeberg;
-using Pomni.Model;
+using Pomni.Models;
 
 namespace Pomni.Commands.Update;
 

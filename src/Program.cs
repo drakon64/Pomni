@@ -2,7 +2,7 @@
 using Pomni.Commands;
 using Pomni.Commands.Bot;
 using Pomni.Commands.Update;
-using Pomni.Model;
+using Pomni.Models;
 
 var rootCommand = new RootCommand("Lock & update Nix dependencies");
 
