@@ -1,6 +1,5 @@
 using System.Text.Json;
 using Pomni.Models;
-using SourceGenerationContext = Pomni.Models.SourceGenerationContext;
 
 namespace Pomni.Commands;
 
