@@ -1,6 +1,1 @@
-{
-  "nixpkgs": {
-    "url": "https://github.com/NixOS/nixpkgs/archive/9bc02893134c733dd85de46ee4fb2fac696b5529.tar.gz",
-    "hash": "sha256-eoS3KQTO0aPWXZvIaRbRAzSSHW3l5wdMFXtT1ISfoKA="
-  }
-}
+{}
